@@ -23,17 +23,18 @@ public class VentanaInicio extends JFrame {
 	
 	JMenuItem munuCargaBajaLibros,menuMostrarMovimientos;
 	
-	JInternalFrame IF_ConversorDitsancias;
+	JInternalFrame IF_AltasUsuarios,IF_BajasUsuarios;
 	JDesktopPane dp=new JDesktopPane();
 	
 	public VentanaInicio() {
-		getContentPane().setLayout(null);
+		getContentPane().setLayout(new BorderLayout());
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setTitle("Libreria los Literatos");
 		setVisible(true);
 		setSize(1200, 725);
 		this.getContentPane().setBackground(new Color(147, 192, 244));
 		setResizable(false);
+		
 		
 		//Menu item Acciones Usuarios
 		
@@ -69,6 +70,21 @@ public class VentanaInicio extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
+				VentanaAgregarUsuarios ventanitaAltas=new VentanaAgregarUsuarios();
+					dp.add(ventanitaAltas);
+					ventanitaAltas.setVisible(true);
+					add(dp);
+					
+			}
+		});
+		menuBajasUsuarios.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				VentanaBajasUsuarios ventanitaBajas=new VentanaBajasUsuarios();
+				dp.add(ventanitaBajas);
+				ventanitaBajas.setVisible(true);
+				add(dp);
 				
 			}
 		});
