@@ -15,7 +15,7 @@ public class VentanaLogin extends JFrame{
 	JLabel lbl1 = new JLabel();
 	
 	private JTextField txtIdUsuario=new JTextField(10);
-	private JTextField txtContraseña=new JTextField(10);
+	private JPasswordField  txtContraseña=new JPasswordField(10);
 	
 	JButton btnIngresar=new JButton("Ingresar");
 	

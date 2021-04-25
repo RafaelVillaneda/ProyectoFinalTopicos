@@ -23,6 +23,9 @@ public class VentanaInicio extends JFrame {
 	
 	JMenuItem munuCargaBajaLibros,menuMostrarMovimientos;
 	
+	JInternalFrame IF_ConversorDitsancias;
+	JDesktopPane dp=new JDesktopPane();
+	
 	public VentanaInicio() {
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -54,21 +57,22 @@ public class VentanaInicio extends JFrame {
 			menuAccionesLibros.add(menuMostrarMovimientos);
 			
 		//Agregar menuBar
-		menuBar1.add(menuAccionesLibros);
 		menuBar1.add(menuAccionesUsuarios);
+		menuBar1.add(menuAccionesLibros);
 		setJMenuBar(menuBar1);
 		
 			
 		//----------------------------------------Eventos--------------------------------
+		
 		menuAltasUsuarios.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-			
+				
 				
 			}
 		});
 		
 		setLocationRelativeTo(null);
-	}
+	}//Constructor
 }
