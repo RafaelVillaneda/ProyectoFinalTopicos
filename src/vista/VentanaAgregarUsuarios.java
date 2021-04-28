@@ -93,7 +93,13 @@ public class VentanaAgregarUsuarios extends JInternalFrame implements ActionList
 		
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			
+			if(e.getSource()==btnAgregar) {
+				//Codigo para agregar
+			}else if(e.getSource()==btnBorrar) {
+				restablecer(cajaCorreo,cajaNombre,cajaPrimerAp,cajaSegundoAp);
+			}else if(e.getSource()==btnCancelar){
+				setVisible(false);
+			}
 			
 		}
 		public void restablecer(Component...ComonentesGraficos){
