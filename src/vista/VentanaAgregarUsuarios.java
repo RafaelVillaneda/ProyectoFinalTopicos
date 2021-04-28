@@ -1,6 +1,7 @@
 package vista;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
@@ -27,6 +28,7 @@ public class VentanaAgregarUsuarios extends JInternalFrame implements ActionList
 		public VentanaAgregarUsuarios() {
 			getContentPane().setLayout(gbl);
 			setDefaultCloseOperation(EXIT_ON_CLOSE);
+			this.getContentPane().setBackground(new Color(147, 192, 244));
 			setTitle("Agregar Usuario");
 			setResizable(false);
 			setVisible(true);
