@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
@@ -26,7 +27,7 @@ public class VentanaAgregarUsuarios extends JInternalFrame implements ActionList
 		public VentanaAgregarUsuarios() {
 			getContentPane().setLayout(gbl);
 			setDefaultCloseOperation(EXIT_ON_CLOSE);
-			setTitle("Altas alumnos");
+			setTitle("Agregar Usuario");
 			setResizable(false);
 			setVisible(true);
 			
@@ -46,6 +47,12 @@ public class VentanaAgregarUsuarios extends JInternalFrame implements ActionList
 			btnAgregar=new JButton("Agregar");
 			btnBorrar=new JButton("Borrar");
 			btnCancelar=new JButton("Cancelar");
+			
+			//Agregar Eventos-----------------
+			
+			btnAgregar.addActionListener(this);
+			btnBorrar.addActionListener(this);
+			btnCancelar.addActionListener(this);
 			
 			//-------Agregado de componentes---------
 			alinear(0, 1, 2, 1, new JLabel("Nombre:"));
@@ -86,9 +93,20 @@ public class VentanaAgregarUsuarios extends JInternalFrame implements ActionList
 		
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
+			
 			
 		}
+		public void restablecer(Component...ComonentesGraficos){
+			
+			for (Component Component : ComonentesGraficos) {
+				if(Component instanceof JComboBox) {
+					((JComboBox<?>)Component).setSelectedIndex(0);
+				}else if(Component instanceof JTextField) {
+					((JTextField)Component).setText("");
+				}
+			}
+			
+		}//Restablecer
 		
 	}
 
