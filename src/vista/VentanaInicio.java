@@ -26,6 +26,8 @@ public class VentanaInicio extends JFrame {
 	JInternalFrame IF_AltasUsuarios,IF_BajasUsuarios;
 	JDesktopPane dp=new JDesktopPane();
 	
+	VentanaAgregarUsuarios ventanitaAltas=new VentanaAgregarUsuarios();
+	
 	public VentanaInicio() {
 		getContentPane().setLayout(new BorderLayout());
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -69,8 +71,6 @@ public class VentanaInicio extends JFrame {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
-				VentanaAgregarUsuarios ventanitaAltas=new VentanaAgregarUsuarios();
 					dp.add(ventanitaAltas);
 					ventanitaAltas.setVisible(true);
 					add(dp);
