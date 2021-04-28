@@ -1,5 +1,7 @@
 import javax.swing.SwingUtilities;
 
+import vista.VentanaCargaDescargaLibros;
+import vista.VentanaInicio;
 import vista.VentanaLogin;
 
 
@@ -12,9 +14,9 @@ public class PruebaProyecto {
 			public void run() {
 				// TODO Auto-generated method stub
 				
-				//new VentanaInicio();
-				new VentanaLogin();
-				
+				new VentanaInicio();
+				//new VentanaLogin();
+				//new VentanaCargaDescargaLibros();
 			}
 		});
 

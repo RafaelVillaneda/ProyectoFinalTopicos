@@ -74,6 +74,7 @@ public class VentanaInicio extends JFrame implements ActionListener{
 			menuAccionesLibros.add(munuCargaBajaLibros);
 			menuAccionesLibros.add(menuMostrarMovimientos);
 			menuAccionesLibros.add(menuAltasBajasLibros);
+			
 		//Agregar menuBar
 		menuBar1.add(menuAccionesUsuarios);
 		menuBar1.add(menuAccionesLibros);
@@ -85,31 +86,31 @@ public class VentanaInicio extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		if(e.getSource()==menuAltasUsuarios) {
+		if(e.getSource()==menuAltasUsuarios) {//GUI completa
 			dp.add(ventanitaAltas);
 			ventanitaAltas.setVisible(true);
 			add(dp);
-		}else if(e.getSource()==menuBajasUsuarios) {
+		}else if(e.getSource()==menuBajasUsuarios) {//Sin configurar
 			VentanaBajasUsuarios ventanitaBajas=new VentanaBajasUsuarios();
 			dp.add(ventanitaBajas);
 			ventanitaBajas.setVisible(true);
 			add(dp);
-		}else if(e.getSource()==menuEdicionUsuarios) {
+		}else if(e.getSource()==menuEdicionUsuarios) {//Sin configurar
 			VentanaEditarUsuario ventanaEdicion=new VentanaEditarUsuario();
 			dp.add(ventanaEdicion);
 			ventanaEdicion.setVisible(true);
 			add(dp);
-		}else if(e.getSource()==munuCargaBajaLibros) {
+		}else if(e.getSource()==munuCargaBajaLibros) {//GUI en edicion
 			VentanaCargaDescargaLibros ventanaRenta=new VentanaCargaDescargaLibros();
 			dp.add(ventanaRenta);
 			ventanaRenta.setVisible(true);
 			add(dp);
-		}else if(e.getSource()==menuMostrarMovimientos) {
+		}else if(e.getSource()==menuMostrarMovimientos) {//Sin configurar
 			
-		}else if(e.getSource()==menuAltasBajasLibros) {
+		}else if(e.getSource()==menuAltasBajasLibros) {//Sin configurar
 			
 		}
 		
-	}
+	}//Eventos
 	
-}
+}//Clase
