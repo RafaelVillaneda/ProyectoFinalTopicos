@@ -103,12 +103,12 @@ public class VentanaInicio extends JFrame implements ActionListener{
 			dp.add(ventanitaBajas);
 			ventanitaBajas.setVisible(true);
 			add(dp);
-		}else if(e.getSource()==menuEdicionUsuarios) {//GUI completa --> Falta eventos para desbloquear cajas de texto 
+		}else if(e.getSource()==menuEdicionUsuarios) {//GUI completa 
 			VentanaEditarUsuario ventanaEdicion=new VentanaEditarUsuario();
 			dp.add(ventanaEdicion);
 			ventanaEdicion.setVisible(true);
 			add(dp);
-		}else if(e.getSource()==munuCargaBajaLibros) {//GUI en edicion --Falta corregir eventos
+		}else if(e.getSource()==munuCargaBajaLibros) {//GUI en edicion 
 			VentanaCargaDescargaLibros ventanaRenta=new VentanaCargaDescargaLibros();
 			dp.add(ventanaRenta);
 			ventanaRenta.setVisible(true);
