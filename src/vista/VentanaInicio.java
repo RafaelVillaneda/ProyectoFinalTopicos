@@ -6,6 +6,8 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
@@ -24,7 +26,12 @@ public class VentanaInicio extends JFrame implements ActionListener{
 	JMenuItem munuCargaBajaLibros,menuMostrarMovimientos,menuAltasBajasLibros;
 	
 	JInternalFrame IF_AltasUsuarios,IF_BajasUsuarios;
+	
 	JDesktopPane dp=new JDesktopPane();
+	ImageIcon fondo=new ImageIcon("./recursos/Fondo.png");
+	JLabel lblFondo=new JLabel(fondo);
+	
+	
 	
 	VentanaAgregarUsuarios ventanitaAltas=new VentanaAgregarUsuarios();
 	
@@ -33,10 +40,11 @@ public class VentanaInicio extends JFrame implements ActionListener{
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setTitle("Libreria los Literatos");
 		setVisible(true);
-		setSize(1200, 725);
+		setSize(750, 500);
 		this.getContentPane().setBackground(new Color(147, 192, 244));
 		setResizable(false);
 		
+		//add(lblFondo); Por arreglar
 		
 		//Menu item Acciones Usuarios
 		
@@ -86,11 +94,11 @@ public class VentanaInicio extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		if(e.getSource()==menuAltasUsuarios) {//GUI completa
+		if(e.getSource()==menuAltasUsuarios) {//GUI completa -Sin validacion!
 			dp.add(ventanitaAltas);
 			ventanitaAltas.setVisible(true);
 			add(dp);
-		}else if(e.getSource()==menuBajasUsuarios) {//Sin configurar
+		}else if(e.getSource()==menuBajasUsuarios) {//En proceso
 			VentanaBajasUsuarios ventanitaBajas=new VentanaBajasUsuarios();
 			dp.add(ventanitaBajas);
 			ventanitaBajas.setVisible(true);
@@ -100,7 +108,7 @@ public class VentanaInicio extends JFrame implements ActionListener{
 			dp.add(ventanaEdicion);
 			ventanaEdicion.setVisible(true);
 			add(dp);
-		}else if(e.getSource()==munuCargaBajaLibros) {//GUI en edicion
+		}else if(e.getSource()==munuCargaBajaLibros) {//GUI en edicion --Falta corregir eventos
 			VentanaCargaDescargaLibros ventanaRenta=new VentanaCargaDescargaLibros();
 			dp.add(ventanaRenta);
 			ventanaRenta.setVisible(true);

@@ -21,7 +21,7 @@ public class VentanaEditarUsuario extends JInternalFrame implements ActionListen
 		setResizable(true);//Cambiar tamaño
 		setClosable(true);//Cerrar
 		
-		String id=JOptionPane.showInputDialog(null, "Introduce el ID. del usuario");
+		//String id=JOptionPane.showInputDialog(null, "Introduce el ID. del usuario");
 		
 		
 		

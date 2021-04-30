@@ -68,7 +68,7 @@ public class VentanaCargaDescargaLibros extends JInternalFrame implements Action
 		btnCargarLibro.setBounds(0, 150, 110, 20);add(btnCargarLibro);
 		btnBorrar.setBounds(115, 150, 80, 20);add(btnBorrar);
 		btncancelar.setBounds(200, 150, 100, 20);add(btncancelar);
-		
+		btnDevolverLibro.setBounds(90,190, 120, 20);add(btnDevolverLibro);
 		
 		radioDevolverLibro.addActionListener(this);
 		radiokAgregarLibro.addActionListener(this);

@@ -16,7 +16,6 @@ public class PruebaProyecto {
 				
 				new VentanaInicio();
 				//new VentanaLogin();
-				//new VentanaCargaDescargaLibros();
 			}
 		});
 

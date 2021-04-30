@@ -6,9 +6,11 @@ import java.awt.Component;
 import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JDesktopPane;
@@ -24,6 +26,9 @@ public class VentanaAgregarUsuarios extends JInternalFrame implements ActionList
 	
 	JTextField cajaNombre,cajaPrimerAp,cajaSegundoAp,cajaCorreo;
 	JButton btnAgregar,btnBorrar,btnCancelar;
+	
+	ImageIcon iconoBotonAdd=new ImageIcon("./recursos/Agregar.png");
+	
 	JTable tabla=new JTable(3, 3);
 		public VentanaAgregarUsuarios() {
 			getContentPane().setLayout(gbl);
@@ -50,6 +55,8 @@ public class VentanaAgregarUsuarios extends JInternalFrame implements ActionList
 			btnBorrar=new JButton("Borrar");
 			btnCancelar=new JButton("Cancelar");
 			
+			
+			
 			//Agregar Eventos-----------------
 			
 			btnAgregar.addActionListener(this);
@@ -70,10 +77,10 @@ public class VentanaAgregarUsuarios extends JInternalFrame implements ActionList
 			alinear(2, 7, 2, 1, cajaCorreo);
 			
 			alinear(0, 8, 1, 2,btnAgregar);
-			alinear(3, 8, 1, 2, btnBorrar);
-			alinear(4, 8, 1, 2, btnCancelar);
+			alinear(2, 8, 1, 2, btnBorrar);
+			alinear(3, 8, 1, 2, btnCancelar);
 			
-			alinear(2, 10, 3, 3, tabla);
+			alinear(0, 10, 3,1, tabla);
 			
 			
 			pack();
