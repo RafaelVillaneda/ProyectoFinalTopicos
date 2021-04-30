@@ -153,6 +153,19 @@ public class VentanaEditarUsuario extends JInternalFrame implements ActionListen
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		if(e.getSource()==btnBuscar) {
+			//------------
+			
+			
+			btnRescribir.setEnabled(false);
+		}else if(e.getSource()==btnLimpiar) {
+			restablecer(cajaCorreo,cajaId,cajaNombre,cajaPrimerAp,cajaSegundoAp);
+		}else if(e.getSource()==btnBuscar) {
+			
+			btnRescribir.setEnabled(true);
+		}else if(e.getSource()==btnCancelar) {
+			setVisible(false);
+		}
 		
 	}
 	public boolean validarCajasVacias() {
