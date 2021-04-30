@@ -94,16 +94,16 @@ public class VentanaInicio extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		if(e.getSource()==menuAltasUsuarios) {//GUI completa -Sin validacion!
+		if(e.getSource()==menuAltasUsuarios) {//GUI completa 
 			dp.add(ventanitaAltas);
 			ventanitaAltas.setVisible(true);
 			add(dp);
-		}else if(e.getSource()==menuBajasUsuarios) {//En proceso
+		}else if(e.getSource()==menuBajasUsuarios) {//GUI Completa :)
 			VentanaBajasUsuarios ventanitaBajas=new VentanaBajasUsuarios();
 			dp.add(ventanitaBajas);
 			ventanitaBajas.setVisible(true);
 			add(dp);
-		}else if(e.getSource()==menuEdicionUsuarios) {//Sin configurar
+		}else if(e.getSource()==menuEdicionUsuarios) {//GUI completa --> Falta eventos para desbloquear cajas de texto 
 			VentanaEditarUsuario ventanaEdicion=new VentanaEditarUsuario();
 			dp.add(ventanaEdicion);
 			ventanaEdicion.setVisible(true);

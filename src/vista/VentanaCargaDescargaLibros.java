@@ -96,6 +96,15 @@ public class VentanaCargaDescargaLibros extends JInternalFrame implements Action
 		
 		
 	}
+	public boolean validarCajasVacias() {
+		if(cajaIdLibro.getText().isEmpty()) {
+			return true;
+		}else if(cajaIdUsuario.getText().isEmpty()) {
+			return true;
+		}
+		return false;
+	}
+	
 	public void restablecer(Component...ComonentesGraficos){
 		
 		for (Component Component : ComonentesGraficos) {
@@ -107,4 +116,5 @@ public class VentanaCargaDescargaLibros extends JInternalFrame implements Action
 		}
 		
 	}//Restablecer
+	
 }

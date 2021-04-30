@@ -1,18 +1,22 @@
 package vista;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-public class VentanaBajasUsuarios extends JInternalFrame {
+public class VentanaBajasUsuarios extends JInternalFrame implements ActionListener{
 	
 	JTextField cajaNombre,cajaPrimerAp,cajaSegundoAp,cajaCorreo,cajaId;
-	JButton btnBaja,btnCancelar,btnBorrar,btnBuscar;
+	JButton btnBaja,btnCancelar,btnLimpiar,btnBuscar;
 	
 	ImageIcon iconoBaja=new ImageIcon("./recursos/216658.png");
 	ImageIcon iconoRegresar=new ImageIcon("./recursos/Regresar.png");
@@ -73,13 +77,67 @@ public class VentanaBajasUsuarios extends JInternalFrame {
 		btnBaja.setIcon(new ImageIcon(iconoBaja.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH)));
 		btnBaja.setBounds(1, 200,50, 60);add(btnBaja);
 		
-		btnBorrar=new JButton(iconoBorrar);
-		btnBorrar.setIcon(new ImageIcon(iconoBorrar.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH)));
-		btnBorrar.setBounds(90, 200,50, 60);add(btnBorrar);
+		btnLimpiar=new JButton(iconoBorrar);
+		btnLimpiar.setIcon(new ImageIcon(iconoBorrar.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH)));
+		btnLimpiar.setBounds(90, 200,50, 60);add(btnLimpiar);
 		
 		btnCancelar=new JButton(iconoRegresar);
 		btnCancelar.setIcon(new ImageIcon(iconoRegresar.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH)));
 		btnCancelar.setBounds(180, 200,50, 60);add(btnCancelar);
 		
+		//Eventos
+		btnBaja.setEnabled(false);
+		btnBaja.addActionListener(this);
+		btnLimpiar.addActionListener(this);
+		btnBuscar.addActionListener(this);
+		btnCancelar.addActionListener(this);
+		
+		//Validaiones cajas  //En progreso
+		
 	}
+	
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if(e.getSource()==btnBuscar) {
+			//------------
+			btnBaja.setEnabled(false);
+		}else if(e.getSource()==btnLimpiar) {
+			restablecer(cajaCorreo,cajaId,cajaNombre,cajaPrimerAp,cajaSegundoAp);
+		}else if(e.getSource()==btnBuscar) {
+			
+			btnBaja.setEnabled(true);
+		}else if(e.getSource()==btnCancelar) {
+			setVisible(false);
+		}
+		
+	}
+	public boolean validarCajasVacias() {
+		if(cajaId.getText().isEmpty()) {
+			return false;
+		}else if(cajaNombre.getText().isEmpty()) {
+			return false;
+		}else if(cajaSegundoAp.getText().isEmpty()) {
+			return false;
+		}else if(cajaPrimerAp.getText().isEmpty()) {
+			return false;
+		}else if(cajaCorreo.getText().isEmpty()) {
+			return false;
+		}
+		return true;
+	}
+	
+	public void restablecer(Component...ComonentesGraficos){
+		
+		for (Component Component : ComonentesGraficos) {
+			if(Component instanceof JComboBox) {
+				((JComboBox<?>)Component).setSelectedIndex(0);
+			}else if(Component instanceof JTextField) {
+				((JTextField)Component).setText("");
+			}
+		}
+		
+	}//Restablecer
+	
+	
 }
