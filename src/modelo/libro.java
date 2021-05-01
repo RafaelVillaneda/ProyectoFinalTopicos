@@ -1,12 +1,12 @@
 package modelo;
 
-public class libro {
+public class Libro {
 
 	private String nombre;
 	private String genero;
 	private String autor;
 	private String editorial;
-	public libro(String nombre, String genero, String autor, String editorial) {
+	public Libro(String nombre, String genero, String autor, String editorial) {
 		super();
 		this.nombre = nombre;
 		this.genero = genero;
