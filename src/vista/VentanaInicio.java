@@ -21,7 +21,7 @@ public class VentanaInicio extends JFrame implements ActionListener{
 	
 	JMenuBar menuBar1;
 	JMenu menuAccionesUsuarios,menuAccionesLibros;
-	JMenuItem menuAltasUsuarios,menuBajasUsuarios,menuEdicionUsuarios;
+	JMenuItem menuAltasUsuarios,menuBajasUsuarios,menuEdicionUsuarios,menuConsultaUsuario;
 	
 	JMenuItem munuCargaBajaLibros,menuMostrarMovimientos,menuAltasBajasLibros;
 	
@@ -58,9 +58,13 @@ public class VentanaInicio extends JFrame implements ActionListener{
 				menuEdicionUsuarios=new JMenuItem("Editar un usuario");
 				menuEdicionUsuarios.addActionListener(this);
 				
+				menuConsultaUsuario=new JMenuItem("Consultar Usuarios");
+				menuConsultaUsuario.addActionListener(this);
+				
 			menuAccionesUsuarios.add(menuAltasUsuarios);
 			menuAccionesUsuarios.add(menuBajasUsuarios);
 			menuAccionesUsuarios.add(menuEdicionUsuarios);
+			menuAccionesUsuarios.add(menuConsultaUsuario);
 		
 		
 		
