@@ -40,11 +40,11 @@ public class ConexionBD {
 		}
 	}
 	
-	/*
+	
 	public static void main(String[] args) {
 		new ConexionBD();
 	}
-	*/
+	
 	//-----------------------METODO PARA OPERCIONES DDL DML (ABC)
 	public boolean ejecutarInstruccion(String sql) {
 		try {
