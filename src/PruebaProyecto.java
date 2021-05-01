@@ -14,8 +14,8 @@ public class PruebaProyecto {
 			public void run() {
 				// TODO Auto-generated method stub
 				
-				new VentanaInicio();
-				//new VentanaLogin();
+				//new VentanaInicio();
+				new VentanaLogin();
 			}
 		});
 

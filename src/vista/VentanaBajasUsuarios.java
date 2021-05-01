@@ -28,7 +28,7 @@ public class VentanaBajasUsuarios extends JInternalFrame implements ActionListen
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setSize(270, 400);
 		setVisible(true);
-		this.getContentPane().setBackground(new Color(147, 192, 244));
+		this.getContentPane().setBackground(new Color(48, 158, 125));
 		setTitle("Eliminar Usuario");
 		
 		setIconifiable(true);//Minimizar
@@ -93,6 +93,8 @@ public class VentanaBajasUsuarios extends JInternalFrame implements ActionListen
 		btnCancelar.addActionListener(this);
 		
 		//Validaiones cajas  //En progreso
+		
+		
 		
 	}
 	

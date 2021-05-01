@@ -32,8 +32,8 @@ public class VentanaAgregarUsuarios extends JInternalFrame implements ActionList
 	JTable tabla=new JTable(3, 3);
 		public VentanaAgregarUsuarios() {
 			getContentPane().setLayout(gbl);
-			setDefaultCloseOperation(EXIT_ON_CLOSE);
-			this.getContentPane().setBackground(new Color(147, 192, 244));
+			setDefaultCloseOperation(HIDE_ON_CLOSE);
+			this.getContentPane().setBackground(new Color(48, 158, 125));
 			setTitle("Agregar Usuario");
 			setResizable(false);
 			setVisible(true);

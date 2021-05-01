@@ -33,18 +33,16 @@ public class VentanaInicio extends JFrame implements ActionListener{
 	
 	
 	
-	VentanaAgregarUsuarios ventanitaAltas=new VentanaAgregarUsuarios();
-	
 	public VentanaInicio() {
 		getContentPane().setLayout(new BorderLayout());
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setTitle("Libreria los Literatos");
 		setVisible(true);
 		setSize(750, 500);
-		this.getContentPane().setBackground(new Color(147, 192, 244));
+		this.getContentPane().setBackground(new Color(41, 184, 141));
 		setResizable(false);
 		
-		//add(lblFondo); Por arreglar
+		dp.setBackground(new Color(41, 184, 141));
 		
 		//Menu item Acciones Usuarios
 		
@@ -95,6 +93,7 @@ public class VentanaInicio extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		
 		if(e.getSource()==menuAltasUsuarios) {//GUI completa 
+			VentanaAgregarUsuarios ventanitaAltas=new VentanaAgregarUsuarios();
 			dp.add(ventanitaAltas);
 			ventanitaAltas.setVisible(true);
 			add(dp);

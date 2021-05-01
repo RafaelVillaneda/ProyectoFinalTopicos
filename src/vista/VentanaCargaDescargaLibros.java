@@ -26,12 +26,12 @@ public class VentanaCargaDescargaLibros extends JInternalFrame implements Action
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setSize(300, 250);
 		setVisible(true);
-		this.getContentPane().setBackground(new Color(147, 192, 244));
+		this.getContentPane().setBackground(new Color(48, 158, 125));
 		setTitle("Renta/Devolucion libros");
 		
 		setIconifiable(true);//Minimizar
 		setResizable(true);//Cambiar tamaño
-		setClosable(true);//Cerrar
+		//setClosable(true);//Cerrar
 		
 		cajaIdLibro=new JTextField(10);
 		cajaIdLibro=new JTextField(10);
