@@ -11,12 +11,12 @@ public class PruebaProyecto {
 	public static void main(String[] args) {
 		SwingUtilities.invokeLater(new Runnable() {
 			 
-			ConexionBD prueba=new ConexionBD();
+			//ConexionBD prueba=new ConexionBD();
 			@Override
 			public void run() {
 				// TODO Auto-generated method stub
 				
-				//new VentanaInicio();
+				new VentanaInicio();
 				//new VentanaLogin();
 			}
 		});

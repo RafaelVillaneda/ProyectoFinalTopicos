@@ -120,6 +120,11 @@ public class VentanaInicio extends JFrame implements ActionListener{
 			
 		}else if(e.getSource()==menuAltasBajasLibros) {//Sin configurar
 			
+		}else if(e.getSource()==menuConsultaUsuario) {//En proceso
+			ConsultaUsuario ventanita=new ConsultaUsuario();
+			dp.add(ventanita);
+			ventanita.setVisible(true);
+			add(dp);
 		}
 		
 	}//Eventos
