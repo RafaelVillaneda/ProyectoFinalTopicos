@@ -20,8 +20,8 @@ import javax.swing.JTextField;
 public class VentanaInicio extends JFrame implements ActionListener{
 	
 	JMenuBar menuBar1;
-	JMenu menuAccionesUsuarios,menuAccionesLibros;
-	JMenuItem menuAltasUsuarios,menuBajasUsuarios,menuEdicionUsuarios,menuConsultaUsuario;
+	JMenu menuAccionesUsuarios,menuAccionesLibros,menuConsultas;
+	JMenuItem menuAltasUsuarios,menuBajasUsuarios,menuEdicionUsuarios,menuConsultaUsuario,menuConsultasLibros;
 	
 	JMenuItem munuCargaBajaLibros,menuMostrarMovimientos,menuAltasBajasLibros;
 	
@@ -58,13 +58,12 @@ public class VentanaInicio extends JFrame implements ActionListener{
 				menuEdicionUsuarios=new JMenuItem("Editar un usuario");
 				menuEdicionUsuarios.addActionListener(this);
 				
-				menuConsultaUsuario=new JMenuItem("Consultar Usuarios");
-				menuConsultaUsuario.addActionListener(this);
+				
 				
 			menuAccionesUsuarios.add(menuAltasUsuarios);
 			menuAccionesUsuarios.add(menuBajasUsuarios);
 			menuAccionesUsuarios.add(menuEdicionUsuarios);
-			menuAccionesUsuarios.add(menuConsultaUsuario);
+			
 		
 		
 		
@@ -84,10 +83,22 @@ public class VentanaInicio extends JFrame implements ActionListener{
 			menuAccionesLibros.add(munuCargaBajaLibros);
 			menuAccionesLibros.add(menuMostrarMovimientos);
 			menuAccionesLibros.add(menuAltasBajasLibros);
+		
+			//Menu item Consultas
+			menuConsultas =new JMenu("Consultas");
+			
+				menuConsultaUsuario=new JMenuItem("Consultar Usuarios");
+				menuConsultaUsuario.addActionListener(this);
+				
+				menuConsultasLibros=new JMenuItem("Consltar Libros"); 
+				menuConsultasLibros.addActionListener(this);
+				menuConsultas.add(menuConsultaUsuario);
+				menuConsultas.add(menuConsultasLibros);
 			
 		//Agregar menuBar
 		menuBar1.add(menuAccionesUsuarios);
 		menuBar1.add(menuAccionesLibros);
+		menuBar1.add(menuConsultas);
 		setJMenuBar(menuBar1);
 
 		setLocationRelativeTo(null);
@@ -120,10 +131,15 @@ public class VentanaInicio extends JFrame implements ActionListener{
 			
 		}else if(e.getSource()==menuAltasBajasLibros) {//Sin configurar
 			
-		}else if(e.getSource()==menuConsultaUsuario) {//En proceso
+		}else if(e.getSource()==menuConsultaUsuario) {//GUI completa 
 			ConsultaUsuario ventanita=new ConsultaUsuario();
 			dp.add(ventanita);
 			ventanita.setVisible(true);
+			add(dp);
+		}else if(e.getSource()==menuConsultasLibros) {//GUI en edicion :)
+			VentanaConsultasLibros consulta=new VentanaConsultasLibros();
+			dp.add(consulta);
+			consulta.setVisible(true);
 			add(dp);
 		}
 		

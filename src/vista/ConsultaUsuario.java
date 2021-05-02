@@ -104,12 +104,12 @@ public class ConsultaUsuario extends JInternalFrame implements ActionListener{
 		btnCancelar.addActionListener(this);
 		
 		//Validaiones cajas
-		cajaNombre.addKeyListener(new KeyListener() {
+		cajaId.addKeyListener(new KeyListener() {
 			
 			@Override
 			public void keyTyped(KeyEvent e) {
 				char car = e.getKeyChar();
-				if(Character.isLetter(car) || Character.isSpaceChar(car)){
+				if(Character.isDigit(car)){
 					//String cadena=txtNombre.getText();
 					//txtNumControl.setText(cadena+e);
 				}else{
