@@ -87,12 +87,10 @@ public class ConexionBD {
 		 return false;
 	}
 	
-	public static  ResultSet ConsultarRegistro(){
+	public static  ResultSet ConsultarRegistro(String consulta){
 		
 		 try {
-			    String consulta = "select * from canciones where banda=?";
 			    pstm = conexion.prepareStatement(consulta);
-		        pstm.setString(1, "Mana");
 		        return pstm.executeQuery();
 		        
 		 } catch (Exception ex) {

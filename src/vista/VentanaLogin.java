@@ -4,8 +4,15 @@ import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 import javax.swing.*;
+
+import ConexionBD.ConexionBD;
+import controlador.UsuarioAdministradorDAO;
+import modelo.UsuarioAdministrador;
 
 public class VentanaLogin extends JFrame{
 	
@@ -18,7 +25,6 @@ public class VentanaLogin extends JFrame{
 	private JPasswordField  txtContraseña=new JPasswordField(10);
 	
 	JButton btnIngresar=new JButton("Ingresar");
-	
 	
 	public VentanaLogin() {
 		getContentPane().setLayout(null);
@@ -56,19 +62,34 @@ public class VentanaLogin extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				//--------------Codigo para validar------------------
+				Connection a = ConexionBD.getConexion();
+				UsuarioAdministradorDAO uDAO=new UsuarioAdministradorDAO();
+				//UsuarioAdministrador u1=new UsuarioAdministrador(Integer.parseInt(txtIdUsuario.getText()), null, null, null, null, txtContraseña.getText());
 				
+				//UsuarioAdministrador u=uDAO.buscar(txtIdUsuario.getText());
+				ArrayList<UsuarioAdministrador> listaUsuarios=new ArrayList<>();
+				listaUsuarios=uDAO.buscar(txtIdUsuario.getText());
 				
+				if(listaUsuarios!=null) {
+					if(listaUsuarios.get(0).getContraseña().equals(txtContraseña.getText())) {
+						SwingUtilities.invokeLater(new Runnable() {
+							 
+							@Override
+							public void run() {
+								
+								new VentanaInicio();
+								setVisible(false);
+							}
+						});
+					}else {
+						JOptionPane.showMessageDialog(null,"Ingresa tus datos correctamente");
+					}
+				}else {
+					JOptionPane.showMessageDialog(null,"Usuario inexistente");
+				}
 				
 				//------------------------------------------------------
-				SwingUtilities.invokeLater(new Runnable() {
-					 
-					@Override
-					public void run() {
-						
-						new VentanaInicio();
-						setVisible(false);
-					}
-				});
+				
 			}
 		});
 	}
