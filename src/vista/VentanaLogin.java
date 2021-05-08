@@ -82,7 +82,7 @@ public class VentanaLogin extends JFrame{
 							}
 						});
 					}else {
-						JOptionPane.showMessageDialog(null,"Ingresa tus datos correctamente");
+						JOptionPane.showMessageDialog(null,"Contreseña incorrecta");
 					}
 				}else {
 					JOptionPane.showMessageDialog(null,"Usuario inexistente");

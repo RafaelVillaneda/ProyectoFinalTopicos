@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import modelo.Libro;
+import modelo.Usuario;
 
 public class ConexionBD {
 
@@ -108,6 +109,24 @@ public class ConexionBD {
 		      pstm.setString(2,libiro.getGenero());
 		      pstm.setString(3,libiro.getAutor());
 		      pstm.setString(4,libiro.getEditorial());
+		      
+	          pstm.executeUpdate();
+ 	          return true;
+		         
+		} catch (SQLException e) {
+		    e.printStackTrace();
+		}
+		return false;
+	}
+	public static   boolean AgregarRegistroTablaUsuarios(Usuario usu) {
+		try {
+		      // Creamos el PreparedStatement si no estaba ya creado.
+		         pstm = conexion.prepareStatement("insert into usuario_cliente values(null,?,?,?,?)");
+		      
+		      pstm.setString(1,usu.getNombre());
+		      pstm.setString(2,usu.getPrimerAp());
+		      pstm.setString(3,usu.getSegundoAp());
+		      pstm.setString(4,usu.getCorreo());
 		      
 	          pstm.executeUpdate();
  	          return true;
