@@ -23,7 +23,7 @@ public class VentanaInicio extends JFrame implements ActionListener{
 	JMenu menuAccionesUsuarios,menuAccionesLibros,menuConsultas;
 	JMenuItem menuAltasUsuarios,menuBajasUsuarios,menuEdicionUsuarios,menuConsultaUsuario,menuConsultasLibros;
 	
-	JMenuItem munuCargaBajaLibros,menuMostrarMovimientos,menuAltasBajasLibros;
+	JMenuItem munuCargaBajaLibros,menuMostrarMovimientos,menuAltasLibros,menuBajasLibros;
 	
 	JInternalFrame IF_AltasUsuarios,IF_BajasUsuarios;
 	
@@ -77,12 +77,12 @@ public class VentanaInicio extends JFrame implements ActionListener{
 				menuMostrarMovimientos=new JMenuItem("Mostrar movimientos en libros");
 				menuMostrarMovimientos.addActionListener(this);
 				
-				menuAltasBajasLibros=new JMenuItem("Agregar libro/ Eliminar libro");
-				menuAltasBajasLibros.addActionListener(this);
+				menuAltasLibros=new JMenuItem("Agregar libro");
+				menuAltasLibros.addActionListener(this);
 				
 			menuAccionesLibros.add(munuCargaBajaLibros);
 			menuAccionesLibros.add(menuMostrarMovimientos);
-			menuAccionesLibros.add(menuAltasBajasLibros);
+			menuAccionesLibros.add(menuAltasLibros);
 		
 			//Menu item Consultas
 			menuConsultas =new JMenu("Consultas");
@@ -127,13 +127,16 @@ public class VentanaInicio extends JFrame implements ActionListener{
 			dp.add(ventanaRenta);
 			ventanaRenta.setVisible(true);
 			add(dp);
-		}else if(e.getSource()==menuMostrarMovimientos) {//GUI edicion
+		}else if(e.getSource()==menuMostrarMovimientos) {//GUI completa
 			VentanaMostrarMovimientos ventanaMovimientos=new VentanaMostrarMovimientos();
 			dp.add(ventanaMovimientos);
 			ventanaMovimientos.setVisible(true);
 			add(dp);
-		}else if(e.getSource()==menuAltasBajasLibros) {//Sin configurar
-			
+		}else if(e.getSource()==menuAltasLibros) {//GUI en edicion
+			VentanaAgregarLibro ventanaGregarL=new VentanaAgregarLibro();
+			dp.add(ventanaGregarL);
+			ventanaGregarL.setVisible(true);
+			add(dp);
 		}else if(e.getSource()==menuConsultaUsuario) {//GUI completa 
 			ConsultaUsuario ventanita=new ConsultaUsuario();
 			dp.add(ventanita);
