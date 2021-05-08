@@ -16,7 +16,7 @@ public class LibroDAO {
 	}
 	public boolean eliminarRegistro(String sql) {
 		
-		// DELETE FROM alumnos WHERE NumControl = '01';
+		// DELETE FROM libros WHERE id_libro = 'filtrio';
 		
         boolean resultado = false;
 		resultado = ConexionBD.EliminarRegistro(sql);

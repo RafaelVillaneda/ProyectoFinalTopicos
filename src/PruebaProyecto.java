@@ -29,7 +29,7 @@ public class PruebaProyecto {
 				//new VentanaInicio();
 				
 				Usuario u=new Usuario(0, "Rafel Eulalio", "Villaneda","de la torre","rafaeua2401@outlook.com");
-				ConexionBD.AgregarRegistroTablaUsuarios(u);
+				//ConexionBD.AgregarRegistroTablaUsuarios(u);
 				
 				new VentanaLogin();
 				
