@@ -1,6 +1,8 @@
 import javax.swing.SwingUtilities;
 
 import ConexionBD.*;
+import controlador.LibroDAO;
+import modelo.Libro;
 import vista.VentanaCargaDescargaLibros;
 import vista.VentanaInicio;
 import vista.VentanaLogin;
@@ -12,11 +14,14 @@ public class PruebaProyecto {
 		
 		SwingUtilities.invokeLater(new Runnable() {
 			 
-			//ConexionBD prueba=new ConexionBD();
+			
 			@Override
 			public void run() {
 				// TODO Auto-generated method stub
-				
+				//ConexionBD prueba=new ConexionBD();
+				Libro l=new Libro("Prueba", "Horror","Rafael", "La palma");
+				LibroDAO lDAO=new LibroDAO();
+				lDAO.insertarRegistro(l);
 				new VentanaInicio();
 				//new VentanaLogin();
 			}

@@ -7,71 +7,106 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import modelo.Libro;
+
 public class ConexionBD {
-	
+
 	private Connection conexion;
-	private PreparedStatement pstm;
+	private PreparedStatement pstm; //NO es tan seguro ya que permite SQL Injection, se recomienda PreparedStatement
 	private ResultSet rs;
 	
 	public ConexionBD() {
-		
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			
-			String URL="jdbc:mysql://localhost:3306/libreria";
+			String URL = "jdbc:mysql://localhost:3306/libreria";
 			
-			conexion=DriverManager.getConnection(URL,"root","REVT2001");
-		
-			System.out.println("CONEXION ESTABLECIDA");
+			conexion = DriverManager.getConnection(URL, "root", "REVT2001");
+			
+			System.out.println("Conexion establecida!!!!");
 			System.out.println("Ya casi soy Ingeniero inmortal");
 			
 		} catch (ClassNotFoundException e) {
-			System.out.println("ERROR DE DRIVER");
-		}catch (SQLException e) {
-			System.out.println("Error de conexion a mysql o de la base de datos");
+			System.out.println("Error de DRIVER");
+		} catch (SQLException e) {
+			System.out.println("Error de conexion en MySQL");
 		}
 	}
+
 	
 	public void cerrarConexion() {
 		try {
 			pstm.close();
 			conexion.close();
 		} catch (SQLException e) {
-			System.out.println("Error de cierre concexion");
+			System.out.println("Error al cerrar la conexion");
 			e.printStackTrace();
 		}
 	}
 	
-	//-----------------------METODO PARA OPERCIONES DDL DML (ABC)
-	public boolean ejecutarInstruccion(String instrucion) {
-		try {
-		      // Creamos el PreparedStatement si no estaba ya creado.
-		      if (null == pstm) {
-		         pstm = conexion.prepareStatement(instrucion);
-		      }
-		      //(null, ?, ?)
-		      pstm.setString(1, "Huevo"); // Mana, el primer interrogante, es un entero.
-		      pstm.setString(2, "12/20/2012"); // El String nombre es el segundo interrogante
-		      pstm.setInt(3, 12); // Y el tercer interrogante, un precio
-	          pstm.executeUpdate();
- 	          return true;
-		   } catch (SQLException e) {
-		      e.printStackTrace();
-		   }finally {
-			   try {
-				conexion.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		   }
-		   return false;
+	// --------------------- Metodo para operaciones DDL y DML (ABC - Altas, Bajas y Cambios)
+	
+	public boolean ActualizarRegistro(){
+		 try {
+			    String consulta = "update canciones set precio=? where banda='a'";
+			    pstm = conexion.prepareStatement(consulta);
+		        pstm.setInt(1, 40);
+		        pstm.executeUpdate();
+		        
+		        return true;
+		        
+		 } catch (Exception ex) {
+		        System.out.println(ex.toString());
+		 }
+		 return false;
 	}
 	
+	public boolean EliminarRegistro(){
+		 try {
+			    String consulta = "delete from canciones where banda=?";
+			    pstm = conexion.prepareStatement(consulta);
+		        pstm.setString(1, "Mana");
+		        pstm.executeUpdate();
+		        
+		        return true;
+		        
+		 } catch (Exception ex) {
+		        System.out.println(ex.toString());
+		 }
+		 return false;
+	}
 	
-	//------------------------METODO PARA OPERACIONES DE CONSULTAS
-	
+	public boolean ConsultarRegistro(){
+		 try {
+			    String consulta = "select * from canciones where banda=?";
+			    pstm = conexion.prepareStatement(consulta);
+		        pstm.setString(1, "Mana");
+		        
+		        return true;
+		        
+		 } catch (Exception ex) {
+		        System.out.println(ex.toString());
+		 }
+		 return false;
+	}
+
+	public boolean AgregarRegistroTablaLibros(Libro libiro) {
+		try {
+		      // Creamos el PreparedStatement si no estaba ya creado.
+		         pstm = conexion.prepareStatement("insert into libros values(null,?,?,?,?)");
+		      
+		      pstm.setString(1,libiro.getNombre());
+		      pstm.setString(2,libiro.getGenero());
+		      pstm.setString(3,libiro.getAutor());
+		      pstm.setString(4,libiro.getEditorial());
+		      
+	          pstm.executeUpdate();
+ 	          return true;
+		         
+		} catch (SQLException e) {
+		    e.printStackTrace();
+		}
+		return false;
+	}
 	
 }
-
-
