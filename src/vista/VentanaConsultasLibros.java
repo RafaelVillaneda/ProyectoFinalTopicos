@@ -137,16 +137,15 @@ public class VentanaConsultasLibros extends JInternalFrame implements ActionList
 		try {
 			modeloDatos = new ResultSetTableModel(controlador, url, consulta);
 		} catch (ClassNotFoundException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		tablaLibros.setModel(modeloDatos);
 		//scroll.setPreferredSize( 400, 600 );
 		
 	}
+	
 	public void restablecer(Component...ComonentesGraficos){
 		
 		for (Component Component : ComonentesGraficos) {

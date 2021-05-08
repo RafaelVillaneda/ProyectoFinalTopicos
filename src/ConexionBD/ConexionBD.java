@@ -10,7 +10,7 @@ import java.sql.Statement;
 public class ConexionBD {
 	
 	private Connection conexion;
-	private Statement stm;
+	private PreparedStatement pstm;
 	private ResultSet rs;
 	
 	public ConexionBD() {
@@ -34,7 +34,7 @@ public class ConexionBD {
 	
 	public void cerrarConexion() {
 		try {
-			stm.close();
+			pstm.close();
 			conexion.close();
 		} catch (SQLException e) {
 			System.out.println("Error de cierre concexion");
@@ -48,29 +48,34 @@ public class ConexionBD {
 	}
 	
 	//-----------------------METODO PARA OPERCIONES DDL DML (ABC)
-	public boolean ejecutarInstruccion(String sql) {
+	public boolean ejecutarInstruccion(String instrucion) {
 		try {
-			stm= conexion.createStatement();
-			int resultado=stm.executeUpdate(sql); //1 todobien 2 todo mal
-			return resultado==1?true:false;
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return false;
-		}
+		      // Creamos el PreparedStatement si no estaba ya creado.
+		      if (null == pstm) {
+		         pstm = conexion.prepareStatement(instrucion);
+		      }
+		      //(null, ?, ?)
+		      pstm.setString(1, "Huevo"); // Mana, el primer interrogante, es un entero.
+		      pstm.setString(2, "12/20/2012"); // El String nombre es el segundo interrogante
+		      pstm.setInt(3, 12); // Y el tercer interrogante, un precio
+	          pstm.executeUpdate();
+ 	          return true;
+		   } catch (SQLException e) {
+		      e.printStackTrace();
+		   }finally {
+			   try {
+				conexion.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		   }
+		   return false;
 	}
 	
+	
 	//------------------------METODO PARA OPERACIONES DE CONSULTAS
-	public ResultSet ejecutarConsulta(String sql) {
-		try {
-			stm=conexion.createStatement();
-			rs=stm.executeQuery(sql);
-		} catch (SQLException e) {
-			System.out.println("No se pudo crear la");
-			e.printStackTrace();
-		}
-		return rs;
-	}
+	
 	
 }
 
