@@ -11,11 +11,11 @@ import modelo.Libro;
 
 public class ConexionBD {
 
-	private Connection conexion;
-	private PreparedStatement pstm; //NO es tan seguro ya que permite SQL Injection, se recomienda PreparedStatement
-	private ResultSet rs;
+	private static Connection conexion=null;
+	private static PreparedStatement pstm; //NO es tan seguro ya que permite SQL Injection, se recomienda PreparedStatement
+	private static ResultSet rs;
 	
-	public ConexionBD() {
+	private ConexionBD() {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			
@@ -32,9 +32,17 @@ public class ConexionBD {
 			System.out.println("Error de conexion en MySQL");
 		}
 	}
+	public static Connection getConexion(){
+		  
+		 if (conexion == null){
+		     new ConexionBD();
+		 }
+		  
+		 return conexion;
+   }
 
 	
-	public void cerrarConexion() {
+	static void cerrarConexion() {
 		try {
 			pstm.close();
 			conexion.close();
@@ -46,7 +54,7 @@ public class ConexionBD {
 	
 	// --------------------- Metodo para operaciones DDL y DML (ABC - Altas, Bajas y Cambios)
 	
-	public boolean ActualizarRegistro(){
+	public static boolean ActualizarRegistro(){
 		 try {
 			    String consulta = "update canciones set precio=? where banda='a'";
 			    pstm = conexion.prepareStatement(consulta);
@@ -61,7 +69,7 @@ public class ConexionBD {
 		 return false;
 	}
 	
-	public boolean EliminarRegistro(){
+	public static boolean EliminarRegistro(String filtro){
 		 try {
 			    String consulta = "delete from canciones where banda=?";
 			    pstm = conexion.prepareStatement(consulta);
@@ -76,21 +84,21 @@ public class ConexionBD {
 		 return false;
 	}
 	
-	public boolean ConsultarRegistro(){
+	public static  ResultSet ConsultarRegistro(){
+		
 		 try {
 			    String consulta = "select * from canciones where banda=?";
 			    pstm = conexion.prepareStatement(consulta);
 		        pstm.setString(1, "Mana");
-		        
-		        return true;
+		        return pstm.executeQuery();
 		        
 		 } catch (Exception ex) {
 		        System.out.println(ex.toString());
 		 }
-		 return false;
+		 return null;
 	}
 
-	public boolean AgregarRegistroTablaLibros(Libro libiro) {
+	public static   boolean AgregarRegistroTablaLibros(Libro libiro) {
 		try {
 		      // Creamos el PreparedStatement si no estaba ya creado.
 		         pstm = conexion.prepareStatement("insert into libros values(null,?,?,?,?)");

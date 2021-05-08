@@ -1,5 +1,7 @@
 import javax.swing.SwingUtilities;
 
+
+import java.sql.Connection;
 import ConexionBD.*;
 import controlador.LibroDAO;
 import modelo.Libro;
@@ -18,8 +20,8 @@ public class PruebaProyecto {
 			@Override
 			public void run() {
 				// TODO Auto-generated method stub
-				//ConexionBD prueba=new ConexionBD();
-				Libro l=new Libro("Prueba", "Horror","Rafael", "La palma");
+				Connection a = ConexionBD.getConexion();
+				Libro l=new Libro("prueba2", "Horror","Ricardo", "La palma");
 				LibroDAO lDAO=new LibroDAO();
 				lDAO.insertarRegistro(l);
 				new VentanaInicio();

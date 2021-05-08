@@ -14,6 +14,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
+import javax.swing.JRadioButton;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
@@ -30,11 +31,14 @@ public class VentanaConsultasLibros extends JInternalFrame implements ActionList
 	ImageIcon iconoBuscar=new ImageIcon("./recursos/lupa.png");
 	
 	JTable tablaLibros=new JTable(5,5);
+	String vec[]={"Selecciona una opcion","ID libro:","Autor:","Editorial:","Genero:","Titulo:","Todos"};
+	byte seleccion=0;
+	JComboBox<String> comboBusquedas=new JComboBox<String>(vec);
 	
 	public VentanaConsultasLibros() {
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setSize(350, 400);
+		setSize(425, 400);
 		setVisible(true);
 		this.getContentPane().setBackground(new Color(48, 158, 125));
 		setTitle("Consultas Libros");
@@ -47,9 +51,8 @@ public class VentanaConsultasLibros extends JInternalFrame implements ActionList
 		cajaGeneros=new JTextField(10);
 		cajaId=new JTextField(10);
 		
-		btnBuscar=new JButton(iconoBuscar);
+		btnBuscar=new JButton(iconoBuscar);btnBuscar.setEnabled(false);
 		btnBuscar.setIcon(new ImageIcon(iconoBuscar.getImage().getScaledInstance(40,40, Image.SCALE_SMOOTH)));
-		
 		
 		//adicion
 		JLabel lb1=new JLabel("ID: libro: ");
@@ -57,6 +60,7 @@ public class VentanaConsultasLibros extends JInternalFrame implements ActionList
 		cajaId.setBounds(60, 15, 100, 20);add(cajaId);
 		btnBuscar.setBounds(175, 5, 40, 40);add(btnBuscar);
 		
+		comboBusquedas.setBounds(250, 5, 150, 30);add(comboBusquedas);comboBusquedas.addActionListener(this);
 		
 		lb1=new JLabel("---------------------------------------------------------------------------------------");
 		lb1.setBounds(0, 25, 350, 50);add(lb1);
@@ -119,30 +123,108 @@ public class VentanaConsultasLibros extends JInternalFrame implements ActionList
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==btnBuscar) {
-			//Busqueda
+			actualizarTabla();
 		}else if(e.getSource()==btnLimpiar) {
 			restablecer(cajaAutor,cajaEditorial,cajaGeneros,cajaId,cajatitulo);
 		}else if(e.getSource()==btnRegresar) {
 			setVisible(false);
+			String vec[]={"Selecciona una opcion","ID libro:","Autor:","Editorial:","Genero:","Todos"};
+		}else if(e.getSource()==comboBusquedas) {
+			if(comboBusquedas.getSelectedIndex()==1) {
+				seleccion=1;
+				btnBuscar.setEnabled(true);
+				cajaId.setEnabled(true);
+				cajaAutor.setEnabled(false);
+				cajaEditorial.setEnabled(false);
+				cajaGeneros.setEnabled(false);
+				cajatitulo.setEnabled(false);
+			}else if(comboBusquedas.getSelectedIndex()==2) {
+				seleccion=2;
+				btnBuscar.setEnabled(true);
+				cajaId.setEnabled(false);
+				cajaAutor.setEnabled(true);
+				cajaEditorial.setEnabled(false);
+				cajaGeneros.setEnabled(false);
+				cajatitulo.setEnabled(false);
+			}else if(comboBusquedas.getSelectedIndex()==3) {
+				seleccion=3;
+				btnBuscar.setEnabled(true);
+				cajaId.setEnabled(false);
+				cajaAutor.setEnabled(false);
+				cajaEditorial.setEnabled(true);
+				cajaGeneros.setEnabled(false);
+				cajatitulo.setEnabled(false);
+			}else if(comboBusquedas.getSelectedIndex()==4) {
+				seleccion=4;
+				btnBuscar.setEnabled(true);
+				cajaId.setEnabled(false);
+				cajaAutor.setEnabled(false);
+				cajaEditorial.setEnabled(false);
+				cajaGeneros.setEnabled(true);
+				cajatitulo.setEnabled(false);
+			}else if(comboBusquedas.getSelectedIndex()==5) {
+				seleccion=5;
+				btnBuscar.setEnabled(true);
+				cajaId.setEnabled(false);
+				cajaAutor.setEnabled(false);
+				cajaEditorial.setEnabled(false);
+				cajaGeneros.setEnabled(false);
+				cajatitulo.setEnabled(true);
+			}else if(comboBusquedas.getSelectedIndex()==0) {
+				seleccion=0;
+				btnBuscar.setEnabled(false);
+				cajaId.setEnabled(false);
+				cajaAutor.setEnabled(false);
+				cajaEditorial.setEnabled(false);
+				cajaGeneros.setEnabled(false);
+				cajatitulo.setEnabled(false);
+			}else if(comboBusquedas.getSelectedIndex()==6) {
+				seleccion=6;
+				btnBuscar.setEnabled(true);
+				cajaId.setEnabled(true);
+				cajaAutor.setEnabled(true);
+				cajaEditorial.setEnabled(true);
+				cajaGeneros.setEnabled(true);
+				cajatitulo.setEnabled(true);
+			}
 		}
 		
 	}
+	
 	public void actualizarTabla() {
-		
 		String controlador = "com.mysql.cj.jdbc.Driver";
 		String url = "jdbc:mysql://localhost:3306/libreria";
 		String consulta = "SELECT * FROM libros";
 		
 		ResultSetTableModel modeloDatos=null;
+		
+		if(seleccion==6) {
+			int id=-1;
+			if(cajaId.getText()=="") {
+			id=Integer.parseInt(cajaId.getText());
+			}
+			consulta ="SELECT * FROM libros WHERE id_libro="+id+" AND nombre='"+cajatitulo.getText()+"' AND genero='"+cajaGeneros.getText()+"'"
+					+ "AND autor = '"+cajaAutor.getText()+"' AND editorial = '"+cajaEditorial.getText()+"';";
+		}else if(seleccion==1) {
+			int id=-1;
+			if(cajaId.getText()=="") {
+			id=Integer.parseInt(cajaId.getText());
+			}
+			consulta ="SELECT * FROM libros WHERE id_libro="+id+";";
+		}
+		
 		try {
 			modeloDatos = new ResultSetTableModel(controlador, url, consulta);
 		} catch (ClassNotFoundException e1) {
+			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		tablaLibros.setModel(modeloDatos);
-		//scroll.setPreferredSize( 400, 600 );
+		
+		
 		
 	}
 	
