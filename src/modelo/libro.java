@@ -6,12 +6,14 @@ public class Libro {
 	private String genero;
 	private String autor;
 	private String editorial;
-	public Libro(String nombre, String genero, String autor, String editorial) {
+	private int IDLibro;
+	public Libro(String nombre, String genero, String autor, String editorial,int IDlibro) {
 		super();
 		this.nombre = nombre;
 		this.genero = genero;
 		this.autor = autor;
 		this.editorial = editorial;
+		this.IDLibro=IDlibro;
 	}
 	
 	public String getNombre() {
@@ -37,6 +39,14 @@ public class Libro {
 	}
 	public void setEditorial(String editorial) {
 		this.editorial = editorial;
+	}
+
+	public int getIDLibro() {
+		return IDLibro;
+	}
+
+	public void setIDLibro(int iDLibro) {
+		IDLibro = iDLibro;
 	}
 	
 	

@@ -14,6 +14,25 @@ public class LibroDAO {
 		
 		return resultado;	
 	}
+	public boolean eliminarRegistro(String sql) {
+		
+		// DELETE FROM alumnos WHERE NumControl = '01';
+		
+        boolean resultado = false;
+		resultado = ConexionBD.EliminarRegistro(sql);
+		
+		return resultado;
+	}//Modificar
+	public boolean modificarLibro(Libro a) {
+		boolean resultado = false;
+		String sql = "UPDATE libros SET nombre='"+a.getNombre()+"', genero='"+a.getGenero()+"', autor='"+a.getAutor()+"',"
+				+ "              editorial = '"+a.getEditorial()+"';";
+		
+		sql="UPDATE libros SET nombre=? where id_libro="+a.getIDLibro()+"";
+		ConexionBD.ActualizarRegistro(a);
+		
+		return false;
+	}
 	
 	
 }

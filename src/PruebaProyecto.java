@@ -21,11 +21,12 @@ public class PruebaProyecto {
 			public void run() {
 				// TODO Auto-generated method stub
 				Connection a = ConexionBD.getConexion();
-				Libro l=new Libro("prueba2", "Horror","Ricardo", "La palma");
+				
 				LibroDAO lDAO=new LibroDAO();
-				lDAO.insertarRegistro(l);
-				new VentanaInicio();
-				//new VentanaLogin();
+				
+				//lDAO.modificarLibro(new Libro("hola", "Horror","Ricardo", "La palma",1));
+				//new VentanaInicio();
+				new VentanaLogin();
 			}
 		});
 

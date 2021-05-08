@@ -54,11 +54,15 @@ public class ConexionBD {
 	
 	// --------------------- Metodo para operaciones DDL y DML (ABC - Altas, Bajas y Cambios)
 	
-	public static boolean ActualizarRegistro(){
+	public static boolean ActualizarRegistro(Libro a){
+		
 		 try {
-			    String consulta = "update canciones set precio=? where banda='a'";
-			    pstm = conexion.prepareStatement(consulta);
-		        pstm.setInt(1, 40);
+			    pstm = conexion.prepareStatement("UPDATE libros SET nombre=?,genero=?,autor=?,editorial=? where id_libro="+a.getIDLibro()+"");
+			    pstm.setString(1,a.getNombre());
+			    pstm.setString(2,a.getGenero());
+			    pstm.setString(3,a.getAutor());
+			    pstm.setString(4,a.getEditorial());
+			    
 		        pstm.executeUpdate();
 		        
 		        return true;
@@ -69,11 +73,10 @@ public class ConexionBD {
 		 return false;
 	}
 	
-	public static boolean EliminarRegistro(String filtro){
+	public static boolean EliminarRegistro(String instruccion){
 		 try {
-			    String consulta = "delete from canciones where banda=?";
+			    String consulta = instruccion;
 			    pstm = conexion.prepareStatement(consulta);
-		        pstm.setString(1, "Mana");
 		        pstm.executeUpdate();
 		        
 		        return true;
