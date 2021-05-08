@@ -80,9 +80,13 @@ public class VentanaInicio extends JFrame implements ActionListener{
 				menuAltasLibros=new JMenuItem("Agregar libro");
 				menuAltasLibros.addActionListener(this);
 				
+				menuBajasLibros=new JMenuItem("Eliminar libro");
+				menuBajasLibros.addActionListener(this);
+				
 			menuAccionesLibros.add(munuCargaBajaLibros);
 			menuAccionesLibros.add(menuMostrarMovimientos);
 			menuAccionesLibros.add(menuAltasLibros);
+			menuAccionesLibros.add(menuBajasLibros);
 		
 			//Menu item Consultas
 			menuConsultas =new JMenu("Consultas");
@@ -136,6 +140,11 @@ public class VentanaInicio extends JFrame implements ActionListener{
 			VentanaAgregarLibro ventanaGregarL=new VentanaAgregarLibro();
 			dp.add(ventanaGregarL);
 			ventanaGregarL.setVisible(true);
+			add(dp);
+		}else if(e.getSource()==menuBajasLibros){
+			VentanaEliminarLibro Veliminar=new VentanaEliminarLibro();
+			dp.add(Veliminar);
+			Veliminar.setVisible(true);
 			add(dp);
 		}else if(e.getSource()==menuConsultaUsuario) {//GUI completa 
 			ConsultaUsuario ventanita=new ConsultaUsuario();
