@@ -67,6 +67,7 @@ public class VentanaLogin extends JFrame{
 				//UsuarioAdministrador u1=new UsuarioAdministrador(Integer.parseInt(txtIdUsuario.getText()), null, null, null, null, txtContraseña.getText());
 				
 				//UsuarioAdministrador u=uDAO.buscar(txtIdUsuario.getText());
+				
 				ArrayList<UsuarioAdministrador> listaUsuarios=new ArrayList<>();
 				listaUsuarios=uDAO.buscar(txtIdUsuario.getText());
 				

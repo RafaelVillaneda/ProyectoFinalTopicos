@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 import modelo.Libro;
+import modelo.Movimiento;
 import modelo.Usuario;
 
 public class ConexionBD {
@@ -63,6 +64,25 @@ public class ConexionBD {
 			    pstm.setString(2,a.getGenero());
 			    pstm.setString(3,a.getAutor());
 			    pstm.setString(4,a.getEditorial());
+			    
+		        pstm.executeUpdate();
+		        
+		        return true;
+		        
+		 } catch (Exception ex) {
+		        System.out.println(ex.toString());
+		 }
+		 return false;
+	}
+	
+	public static boolean ActualizarRegistroUsuario(Usuario a){
+		
+		 try {
+			    pstm = conexion.prepareStatement("UPDATE usuario_cliente SET nombre=?,primerAp=?,segundoAp=?,correo=? where id_usuario="+a.getId()+"");
+			    pstm.setString(1,a.getNombre());
+			    pstm.setString(2,a.getPrimerAp());
+			    pstm.setString(3,a.getSegundoAp());
+			    pstm.setString(4,a.getCorreo());
 			    
 		        pstm.executeUpdate();
 		        
@@ -135,16 +155,16 @@ public class ConexionBD {
 		}
 		return false;
 	}
-	public static   boolean AgregarRegistroTablaMovimientos(Usuario usu) {
+	public static   boolean AgregarRegistroTablaMovimientos(Movimiento m) {
 		try {
 		      // Creamos el PreparedStatement si no estaba ya creado.
 		         pstm = conexion.prepareStatement("insert into usuario_cliente values(null,?,?,?,?)");
-		      
-		      pstm.setString(1,usu.getNombre());
-		      pstm.setString(2,usu.getPrimerAp());
-		      pstm.setString(3,usu.getSegundoAp());
-		      pstm.setString(4,usu.getCorreo());
-		      
+		      /*
+		      pstm.setString(1,m.getId_libro()));
+		      pstm.setString(2,m.getPrimerAp());
+		      pstm.setString(3,m.getSegundoAp());
+		      pstm.setString(4,m.getCorreo());
+		      */
 	          pstm.executeUpdate();
  	          return true;
 		         

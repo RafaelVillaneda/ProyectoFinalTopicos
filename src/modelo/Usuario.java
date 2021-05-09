@@ -7,6 +7,7 @@ public class Usuario {
 	private String primerAp;
 	private String segundoAp;
 	private String correo;
+	public Usuario() {}
 	public Usuario(int id, String nombre, String primerAp, String segundoAp, String correo) {
 		super();
 		this.id = id;

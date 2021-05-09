@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -15,6 +16,11 @@ import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+
+import ConexionBD.ConexionBD;
+import controlador.UsuarioDAO;
+import modelo.Usuario;
+import modelo.UsuarioAdministrador;
 
 public class VentanaEditarUsuario extends JInternalFrame implements ActionListener{
 	
@@ -26,6 +32,7 @@ public class VentanaEditarUsuario extends JInternalFrame implements ActionListen
 	ImageIcon iconoBorrar=new ImageIcon("./recursos/Restablecer.png");
 	ImageIcon iconoBuscar=new ImageIcon("./recursos/lupa.png");
 	
+	UsuarioDAO uDAO=new UsuarioDAO();
 	public VentanaEditarUsuario() {
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -154,15 +161,44 @@ public class VentanaEditarUsuario extends JInternalFrame implements ActionListen
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==btnBuscar) {
-			//------------
+			Usuario u2=uDAO.buscar(Integer.parseInt(cajaId.getText()));
 			
+			if(u2!=null) {
+				cajaCorreo.setEditable(true);
+				cajaNombre.setEditable(true);
+				cajaPrimerAp.setEditable(true);
+				cajaSegundoAp.setEditable(true);
+				
+				cajaCorreo.setText(u2.getCorreo());
+				cajaNombre.setText(u2.getNombre());
+				cajaPrimerAp.setText(u2.getPrimerAp());
+				cajaSegundoAp.setText(u2.getSegundoAp());
+				btnRescribir.setEnabled(true);
+				
+			}else {
+				JOptionPane.showMessageDialog(null,"Usuario no encontrado");
+			}
 			
-			btnRescribir.setEnabled(false);
 		}else if(e.getSource()==btnLimpiar) {
 			restablecer(cajaCorreo,cajaId,cajaNombre,cajaPrimerAp,cajaSegundoAp);
-		}else if(e.getSource()==btnBuscar) {
+		}else if(e.getSource()==btnRescribir) {
+			Usuario usuario=new Usuario();
+			if(validarCajasVacias()) {
+			usuario.setId(Integer.parseInt(cajaId.getText()));
+			usuario.setCorreo(cajaCorreo.getText());
+			usuario.setNombre(cajaNombre.getText());
+			usuario.setPrimerAp(cajaPrimerAp.getText());
+			usuario.setSegundoAp(cajaSegundoAp.getText());
 			
-			btnRescribir.setEnabled(true);
+				if(uDAO.modificarUsuario(usuario)) {
+					JOptionPane.showMessageDialog(null,"Registro actualizado");
+				}else {
+					JOptionPane.showMessageDialog(null,"Registro NO actualizado");
+				}
+			}else {
+				JOptionPane.showMessageDialog(null,"Llena todos los datos");
+			}
+			
 		}else if(e.getSource()==btnCancelar) {
 			setVisible(false);
 		}
