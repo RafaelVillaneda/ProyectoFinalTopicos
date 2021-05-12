@@ -13,7 +13,11 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+
+import controlador.UsuarioDAO;
+import modelo.Usuario;
 
 public class VentanaBajasUsuarios extends JInternalFrame implements ActionListener{
 	
@@ -116,14 +120,26 @@ public class VentanaBajasUsuarios extends JInternalFrame implements ActionListen
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		UsuarioDAO uDAO=new UsuarioDAO();
 		if(e.getSource()==btnBuscar) {
-			//------------
-			btnBaja.setEnabled(false);
+			if(!cajaId.getText().isEmpty()) {
+			Usuario usu= uDAO.buscar(Integer.parseInt(cajaId.getText()));
+			cajaCorreo.setText(usu.getCorreo());
+			cajaNombre.setText(usu.getNombre());
+			cajaPrimerAp.setText(usu.getPrimerAp());
+			cajaSegundoAp.setText(usu.getSegundoAp());
+			btnBaja.setEnabled(true);
+			}else {
+				JOptionPane.showMessageDialog(null,"La casilla ID no puede estar vacia.");
+			}
 		}else if(e.getSource()==btnLimpiar) {
 			restablecer(cajaCorreo,cajaId,cajaNombre,cajaPrimerAp,cajaSegundoAp);
-		}else if(e.getSource()==btnBuscar) {
-			
-			btnBaja.setEnabled(true);
+		}else if(e.getSource()==btnBaja) {
+			if(uDAO.eliminarRegistro(cajaId.getText())) {
+				JOptionPane.showMessageDialog(null,"Se elimino el Usuario correctamente");
+			}else {
+				JOptionPane.showMessageDialog(null,"NO se elimino el Usuario correctamente");
+			}
 		}else if(e.getSource()==btnCancelar) {
 			setVisible(false);
 		}
