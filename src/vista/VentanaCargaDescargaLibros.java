@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -75,6 +77,34 @@ public class VentanaCargaDescargaLibros extends JInternalFrame implements Action
 		btnCargarLibro.addActionListener(this);
 		btncancelar.addActionListener(this);
 		btncancelar.addActionListener(this);
+		//Validar cajas
+		cajaIdLibro.addKeyListener(new KeyListener() {
+			
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char car = e.getKeyChar();
+				if(Character.isDigit(car)){}else{
+				e.consume();
+				getToolkit().beep();
+				}
+			}
+			@Override public void keyPressed(KeyEvent e) {}
+			@Override public void keyReleased(KeyEvent e) {}
+		});
+		
+		cajaIdUsuario.addKeyListener(new KeyListener() {
+			
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char car = e.getKeyChar();
+				if(Character.isDigit(car)){}else{
+				e.consume();
+				getToolkit().beep();
+				}
+			}
+			@Override public void keyPressed(KeyEvent e) {}
+			@Override public void keyReleased(KeyEvent e) {}
+		});
 		
 	}
 

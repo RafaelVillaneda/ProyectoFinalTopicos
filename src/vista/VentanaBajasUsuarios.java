@@ -5,6 +5,8 @@ import java.awt.Component;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -93,7 +95,20 @@ public class VentanaBajasUsuarios extends JInternalFrame implements ActionListen
 		btnCancelar.addActionListener(this);
 		
 		//Validaiones cajas  //En progreso
-		
+		cajaId.addKeyListener(new KeyListener() {
+			
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char car = e.getKeyChar();
+				if(Character.isDigit(car)){
+				}else{
+				e.consume();
+				getToolkit().beep();
+				}
+			}
+			@Override public void keyPressed(KeyEvent e) {}
+			@Override public void keyReleased(KeyEvent e) {}
+		});
 		
 		
 	}

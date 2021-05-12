@@ -111,7 +111,7 @@ public class VentanaInicio extends JFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		
-		if(e.getSource()==menuAltasUsuarios) {//GUI completa 
+		if(e.getSource()==menuAltasUsuarios) {//GUI completa --MYSQL
 			VentanaAgregarUsuarios ventanitaAltas=new VentanaAgregarUsuarios();
 			dp.add(ventanitaAltas);
 			ventanitaAltas.setVisible(true);
@@ -121,7 +121,7 @@ public class VentanaInicio extends JFrame implements ActionListener{
 			dp.add(ventanitaBajas);
 			ventanitaBajas.setVisible(true);
 			add(dp);
-		}else if(e.getSource()==menuEdicionUsuarios) {//GUI completa 
+		}else if(e.getSource()==menuEdicionUsuarios) {//GUI completa --MYSQL
 			VentanaEditarUsuario ventanaEdicion=new VentanaEditarUsuario();
 			dp.add(ventanaEdicion);
 			ventanaEdicion.setVisible(true);

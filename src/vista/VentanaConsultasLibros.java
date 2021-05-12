@@ -57,7 +57,7 @@ public class VentanaConsultasLibros extends JInternalFrame implements ActionList
 		//adicion
 		JLabel lb1=new JLabel("ID: libro: ");
 		lb1.setBounds(10, 0, 100, 50);add(lb1);
-		cajaId.setBounds(60, 15, 100, 20);add(cajaId);
+		cajaId.setBounds(60, 15, 100, 20);add(cajaId);cajaId.setEnabled(false);
 		btnBuscar.setBounds(175, 5, 40, 40);add(btnBuscar);
 		
 		comboBusquedas.setBounds(250, 5, 150, 30);add(comboBusquedas);comboBusquedas.addActionListener(this);
@@ -128,7 +128,6 @@ public class VentanaConsultasLibros extends JInternalFrame implements ActionList
 			restablecer(cajaAutor,cajaEditorial,cajaGeneros,cajaId,cajatitulo);
 		}else if(e.getSource()==btnRegresar) {
 			setVisible(false);
-			String vec[]={"Selecciona una opcion","ID libro:","Autor:","Editorial:","Genero:","Todos"};
 		}else if(e.getSource()==comboBusquedas) {
 			if(comboBusquedas.getSelectedIndex()==1) {
 				seleccion=1;
@@ -197,7 +196,7 @@ public class VentanaConsultasLibros extends JInternalFrame implements ActionList
 		String consulta = "SELECT * FROM libros";
 		
 		ResultSetTableModel modeloDatos=null;
-		
+		//"Selecciona una opcion","ID libro:","Autor:","Editorial:","Genero:","Titulo:","Todos"};
 		if(seleccion==6) {
 			int id=-1;
 			if(cajaId.getText()=="") {
@@ -211,6 +210,16 @@ public class VentanaConsultasLibros extends JInternalFrame implements ActionList
 			id=Integer.parseInt(cajaId.getText());
 			}
 			consulta ="SELECT * FROM libros WHERE id_libro="+id+";";
+		}else if(seleccion==2) {
+			consulta ="SELECT * FROM libros WHERE autor='"+cajaAutor.getText()+"';";
+		}else if(seleccion==3) {
+			consulta ="SELECT * FROM libros WHERE editorial='"+cajaEditorial.getText()+"';";
+		}else if(seleccion==4) {
+			consulta ="SELECT * FROM libros WHERE genero='"+cajaGeneros.getText()+"';";
+		}else if(seleccion==5) {
+			consulta ="SELECT * FROM libros WHERE nombre='"+cajaAutor.getText()+"';";
+		}else if(seleccion==0) {
+			consulta ="SELECT * FROM libros;";
 		}
 		
 		try {

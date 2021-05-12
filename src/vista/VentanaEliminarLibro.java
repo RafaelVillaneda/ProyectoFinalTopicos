@@ -38,7 +38,7 @@ public class VentanaEliminarLibro extends JInternalFrame implements ActionListen
 		setSize(350, 400);
 		setVisible(true);
 		this.getContentPane().setBackground(new Color(48, 158, 125));
-		setTitle("Consultas Libros");
+		setTitle("Eliminar libro");
 		
 		//Incicalizar------
 		

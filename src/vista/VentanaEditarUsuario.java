@@ -103,6 +103,24 @@ public class VentanaEditarUsuario extends JInternalFrame implements ActionListen
 		btnCancelar.addActionListener(this);
 		
 		//Validaiones cajas
+		
+		cajaId.addKeyListener(new KeyListener() {
+			
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char car = e.getKeyChar();
+				if(Character.isDigit(car)){
+					//String cadena=txtNombre.getText();
+					//txtNumControl.setText(cadena+e);
+				}else{
+				e.consume();
+				getToolkit().beep();
+				}
+			}
+			@Override public void keyPressed(KeyEvent e) {}
+			@Override public void keyReleased(KeyEvent e) {}
+		});
+		
 		cajaNombre.addKeyListener(new KeyListener() {
 			
 			@Override

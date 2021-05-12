@@ -100,7 +100,6 @@ public class ConexionBD {
 			    pstm = conexion.prepareStatement(consulta);
 		        pstm.executeUpdate();
 		        return true;
-		        
 		 } catch (Exception ex) {
 		        System.out.println(ex.toString());
 		 }
@@ -137,7 +136,7 @@ public class ConexionBD {
 		}
 		return false;
 	}
-	public static   boolean AgregarRegistroTablaUsuarios(Usuario usu) {
+	public static boolean AgregarRegistroTablaUsuarios(Usuario usu) {
 		try {
 		      // Creamos el PreparedStatement si no estaba ya creado.
 		         pstm = conexion.prepareStatement("insert into usuario_cliente values(null,?,?,?,?)");

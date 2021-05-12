@@ -174,7 +174,7 @@ public class VentanaAgregarLibro extends JInternalFrame implements ActionListene
 		if(e.getSource()==btnAgregarLibro) {
 			
 			//Agregar
-			
+			actualizarTabla();
 		}else if(e.getSource()==btnLimpiar) {
 			restablecer(cajaAutor,cajaEditorial,cajaGeneros,cajatitulo);
 		}else if(e.getSource()==btnRegresar) {
