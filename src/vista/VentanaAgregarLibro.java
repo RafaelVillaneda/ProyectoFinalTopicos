@@ -20,6 +20,10 @@ import javax.swing.JSpinner;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
+import ConexionBD.ConexionBD;
+import controlador.LibroDAO;
+import modelo.Libro;
+
 public class VentanaAgregarLibro extends JInternalFrame implements ActionListener{
 	
 	JTextField cajatitulo,cajaAutor,cajaEditorial,cajaGeneros;
@@ -172,8 +176,8 @@ public class VentanaAgregarLibro extends JInternalFrame implements ActionListene
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==btnAgregarLibro) {
-			
-			//Agregar
+			Libro libro=new Libro(cajatitulo.getText(), cajaGeneros.getText(), cajaAutor.getText(), cajaEditorial.getText(),0);
+			ConexionBD.AgregarRegistroTablaLibros(libro);
 			actualizarTabla();
 		}else if(e.getSource()==btnLimpiar) {
 			restablecer(cajaAutor,cajaEditorial,cajaGeneros,cajatitulo);
@@ -197,8 +201,6 @@ public class VentanaAgregarLibro extends JInternalFrame implements ActionListene
 			e1.printStackTrace();
 		}
 		tablaLibros.setModel(modeloDatos);
-		//scroll.setPreferredSize( 400, 600 );
-		
 	}
 	
 	public void restablecer(Component...ComonentesGraficos){

@@ -137,6 +137,7 @@ public class VentanaConsultasLibros extends JInternalFrame implements ActionList
 				cajaEditorial.setEnabled(false);
 				cajaGeneros.setEnabled(false);
 				cajatitulo.setEnabled(false);
+				System.out.println(seleccion+"-->"+comboBusquedas.getSelectedItem());
 			}else if(comboBusquedas.getSelectedIndex()==2) {
 				seleccion=2;
 				btnBuscar.setEnabled(true);
@@ -145,6 +146,7 @@ public class VentanaConsultasLibros extends JInternalFrame implements ActionList
 				cajaEditorial.setEnabled(false);
 				cajaGeneros.setEnabled(false);
 				cajatitulo.setEnabled(false);
+				System.out.println(seleccion+"-->"+comboBusquedas.getSelectedItem());
 			}else if(comboBusquedas.getSelectedIndex()==3) {
 				seleccion=3;
 				btnBuscar.setEnabled(true);
@@ -153,6 +155,7 @@ public class VentanaConsultasLibros extends JInternalFrame implements ActionList
 				cajaEditorial.setEnabled(true);
 				cajaGeneros.setEnabled(false);
 				cajatitulo.setEnabled(false);
+				System.out.println(seleccion+"-->"+comboBusquedas.getSelectedItem());
 			}else if(comboBusquedas.getSelectedIndex()==4) {
 				seleccion=4;
 				btnBuscar.setEnabled(true);
@@ -161,6 +164,7 @@ public class VentanaConsultasLibros extends JInternalFrame implements ActionList
 				cajaEditorial.setEnabled(false);
 				cajaGeneros.setEnabled(true);
 				cajatitulo.setEnabled(false);
+				System.out.println(seleccion+"-->"+comboBusquedas.getSelectedItem());
 			}else if(comboBusquedas.getSelectedIndex()==5) {
 				seleccion=5;
 				btnBuscar.setEnabled(true);
@@ -169,6 +173,7 @@ public class VentanaConsultasLibros extends JInternalFrame implements ActionList
 				cajaEditorial.setEnabled(false);
 				cajaGeneros.setEnabled(false);
 				cajatitulo.setEnabled(true);
+				System.out.println(seleccion+"-->"+comboBusquedas.getSelectedItem());
 			}else if(comboBusquedas.getSelectedIndex()==0) {
 				seleccion=0;
 				btnBuscar.setEnabled(false);
@@ -177,6 +182,8 @@ public class VentanaConsultasLibros extends JInternalFrame implements ActionList
 				cajaEditorial.setEnabled(false);
 				cajaGeneros.setEnabled(false);
 				cajatitulo.setEnabled(false);
+				System.out.println(seleccion+"-->"+comboBusquedas.getSelectedItem());
+				actualizarTabla();
 			}else if(comboBusquedas.getSelectedIndex()==6) {
 				seleccion=6;
 				btnBuscar.setEnabled(true);
@@ -185,6 +192,7 @@ public class VentanaConsultasLibros extends JInternalFrame implements ActionList
 				cajaEditorial.setEnabled(true);
 				cajaGeneros.setEnabled(true);
 				cajatitulo.setEnabled(true);
+				System.out.println(seleccion+"-->"+comboBusquedas.getSelectedItem());
 			}
 		}
 		
@@ -199,14 +207,14 @@ public class VentanaConsultasLibros extends JInternalFrame implements ActionList
 		//"Selecciona una opcion","ID libro:","Autor:","Editorial:","Genero:","Titulo:","Todos"};
 		if(seleccion==6) {
 			int id=-1;
-			if(cajaId.getText()=="") {
+			if(cajaId.getText()!="") {
 			id=Integer.parseInt(cajaId.getText());
 			}
 			consulta ="SELECT * FROM libros WHERE id_libro="+id+" AND nombre='"+cajatitulo.getText()+"' AND genero='"+cajaGeneros.getText()+"'"
 					+ "AND autor = '"+cajaAutor.getText()+"' AND editorial = '"+cajaEditorial.getText()+"';";
 		}else if(seleccion==1) {
 			int id=-1;
-			if(cajaId.getText()=="") {
+			if(cajaId.getText()!="") {
 			id=Integer.parseInt(cajaId.getText());
 			}
 			consulta ="SELECT * FROM libros WHERE id_libro="+id+";";
@@ -218,8 +226,6 @@ public class VentanaConsultasLibros extends JInternalFrame implements ActionList
 			consulta ="SELECT * FROM libros WHERE genero='"+cajaGeneros.getText()+"';";
 		}else if(seleccion==5) {
 			consulta ="SELECT * FROM libros WHERE nombre='"+cajaAutor.getText()+"';";
-		}else if(seleccion==0) {
-			consulta ="SELECT * FROM libros;";
 		}
 		
 		try {
