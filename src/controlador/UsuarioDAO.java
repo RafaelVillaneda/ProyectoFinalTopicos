@@ -4,6 +4,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import ConexionBD.ConexionBD;
 import modelo.Libro;
 import modelo.Usuario;
@@ -51,6 +53,7 @@ public class UsuarioDAO {
 			u1.setCorreo(rs.getString(5));
 			
 			}else {
+				JOptionPane.showMessageDialog(null,"No existe el usuario");
 				return null;
 			}
 		} catch (SQLException e) {

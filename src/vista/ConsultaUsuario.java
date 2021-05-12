@@ -15,10 +15,15 @@ import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.JTable;
 import javax.swing.JTextField;
+
+import ConexionBD.ConexionBD;
+import controlador.UsuarioDAO;
+import modelo.Usuario;
 
 public class ConsultaUsuario extends JInternalFrame implements ActionListener{
 
@@ -161,6 +166,16 @@ public class ConsultaUsuario extends JInternalFrame implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==btnBuscar) {
+			UsuarioDAO uDAO=new UsuarioDAO();
+			if(!cajaId.getText().isEmpty()) {
+			Usuario usu= uDAO.buscar(Integer.parseInt(cajaId.getText()));
+			cajaCorreo.setText(usu.getCorreo());
+			cajaNombre.setText(usu.getNombre());
+			cajaPrimerAp.setText(usu.getPrimerAp());
+			cajaSegundoAp.setText(usu.getSegundoAp());
+			}else {
+				JOptionPane.showMessageDialog(null,"La casilla ID no puede estar vacia.");
+			}
 			
 		}else if(e.getSource()==btnLimpiar) {
 			restablecer(cajaCorreo,cajaId,cajaNombre,cajaPrimerAp,cajaSegundoAp);
@@ -186,7 +201,6 @@ public class ConsultaUsuario extends JInternalFrame implements ActionListener{
 			e1.printStackTrace();
 		}
 		tabla.setModel(modeloDatos);
-		//scroll.setPreferredSize( 400, 600 );
 		
 	}
 	public void restablecer(Component...ComonentesGraficos){
