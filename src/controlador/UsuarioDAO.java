@@ -21,9 +21,8 @@ public class UsuarioDAO {
 		return resultado;	
 	}
 	public boolean eliminarRegistro(String idEliminar) {
-		
-		// DELETE FROM libros WHERE id_libro = 'filtrio';
-		String instruccion="DELETE FROM libros WHERE id_libro = '"+idEliminar+"';";
+
+		String instruccion="DELETE FROM usuario_cliente WHERE id_usuario = '"+idEliminar+"';";
         boolean resultado = false;
 		resultado = ConexionBD.EliminarRegistro(instruccion);
 		

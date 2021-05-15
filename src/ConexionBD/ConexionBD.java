@@ -139,7 +139,7 @@ public class ConexionBD {
 	public static boolean AgregarRegistroTablaUsuarios(Usuario usu) {
 		try {
 		      // Creamos el PreparedStatement si no estaba ya creado.
-		         pstm = conexion.prepareStatement("insert into usuario_cliente values(null,?,?,?,?)");
+		      pstm = conexion.prepareStatement("insert into usuario_cliente values(null,?,?,?,?)");
 		      
 		      pstm.setString(1,usu.getNombre());
 		      pstm.setString(2,usu.getPrimerAp());
@@ -156,14 +156,12 @@ public class ConexionBD {
 	}
 	public static   boolean AgregarRegistroTablaMovimientos(Movimiento m) {
 		try {
-		      // Creamos el PreparedStatement si no estaba ya creado.
-		         pstm = conexion.prepareStatement("insert into usuario_cliente values(null,?,?,?,?)");
-		      /*
-		      pstm.setString(1,m.getId_libro()));
-		      pstm.setString(2,m.getPrimerAp());
-		      pstm.setString(3,m.getSegundoAp());
-		      pstm.setString(4,m.getCorreo());
-		      */
+		      pstm = conexion.prepareStatement("insert into usuario_cliente values(null,?,?,null)");
+		      
+		      pstm.setInt(1, m.getId_libro());
+		      pstm.setInt(2, m.getId_usuario());
+		      
+		      
 	          pstm.executeUpdate();
  	          return true;
 		         

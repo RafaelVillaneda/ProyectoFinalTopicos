@@ -15,6 +15,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.JTable;
@@ -177,8 +178,12 @@ public class VentanaAgregarLibro extends JInternalFrame implements ActionListene
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==btnAgregarLibro) {
 			Libro libro=new Libro(cajatitulo.getText(), cajaGeneros.getText(), cajaAutor.getText(), cajaEditorial.getText(),0);
-			ConexionBD.AgregarRegistroTablaLibros(libro);
-			actualizarTabla();
+			if(ConexionBD.AgregarRegistroTablaLibros(libro)) {
+				JOptionPane.showMessageDialog(null,"Se agrego el libro correctamente");
+				actualizarTabla();
+			}else {
+				JOptionPane.showMessageDialog(rootPane,"No se agrego el libro","Error",JOptionPane.ERROR_MESSAGE);
+			}
 		}else if(e.getSource()==btnLimpiar) {
 			restablecer(cajaAutor,cajaEditorial,cajaGeneros,cajatitulo);
 		}else if(e.getSource()==btnRegresar) {

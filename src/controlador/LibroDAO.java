@@ -1,9 +1,14 @@
 package controlador;
 
 import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import javax.swing.JOptionPane;
 
 import ConexionBD.ConexionBD;
 import modelo.Libro;
+import modelo.Usuario;
 
 public class LibroDAO {
 	
@@ -32,6 +37,30 @@ public class LibroDAO {
 		ConexionBD.ActualizarRegistro(a);
 		
 		return false;
+	}
+	public Libro buscar(int filtro){
+		Libro l1=new Libro();
+		String sql="SELECT * FROM libros WHERE id_libro ='"+filtro+"';";
+		
+		ResultSet rs=ConexionBD.ConsultarRegistro(sql);
+		
+		try {
+			
+			if(rs.next()) {
+				l1.setIDLibro(rs.getInt(1));
+				l1.setNombre(rs.getString(2));
+				l1.setGenero(rs.getString(3));
+				l1.setAutor(rs.getString(4));
+				l1.setEditorial(rs.getString(5));
+			}else {
+				JOptionPane.showMessageDialog(null,"No existe el usuario");
+				return null;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return l1;
 	}
 	
 	

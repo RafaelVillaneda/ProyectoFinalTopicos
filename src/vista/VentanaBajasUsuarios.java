@@ -124,11 +124,13 @@ public class VentanaBajasUsuarios extends JInternalFrame implements ActionListen
 		if(e.getSource()==btnBuscar) {
 			if(!cajaId.getText().isEmpty()) {
 			Usuario usu= uDAO.buscar(Integer.parseInt(cajaId.getText()));
-			cajaCorreo.setText(usu.getCorreo());
-			cajaNombre.setText(usu.getNombre());
-			cajaPrimerAp.setText(usu.getPrimerAp());
-			cajaSegundoAp.setText(usu.getSegundoAp());
-			btnBaja.setEnabled(true);
+			if(usu!=null) {
+				cajaCorreo.setText(usu.getCorreo());
+				cajaNombre.setText(usu.getNombre());
+				cajaPrimerAp.setText(usu.getPrimerAp());
+				cajaSegundoAp.setText(usu.getSegundoAp());
+				btnBaja.setEnabled(true);
+			}
 			}else {
 				JOptionPane.showMessageDialog(null,"La casilla ID no puede estar vacia.");
 			}
@@ -137,6 +139,7 @@ public class VentanaBajasUsuarios extends JInternalFrame implements ActionListen
 		}else if(e.getSource()==btnBaja) {
 			if(uDAO.eliminarRegistro(cajaId.getText())) {
 				JOptionPane.showMessageDialog(null,"Se elimino el Usuario correctamente");
+				btnBaja.setEnabled(false);
 			}else {
 				JOptionPane.showMessageDialog(null,"NO se elimino el Usuario correctamente");
 			}
