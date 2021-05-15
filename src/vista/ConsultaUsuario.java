@@ -35,6 +35,8 @@ public class ConsultaUsuario extends JInternalFrame implements ActionListener{
 	ImageIcon iconoBorrar=new ImageIcon("./recursos/Restablecer.png");
 	ImageIcon iconoBuscar=new ImageIcon("./recursos/lupa.png");
 	
+	public static byte bandera;
+	
 	JTable tabla=new JTable();
 	public ConsultaUsuario() {
 		getContentPane().setLayout(null);
@@ -169,8 +171,11 @@ public class ConsultaUsuario extends JInternalFrame implements ActionListener{
 		if(e.getSource()==btnBuscar) {
 			UsuarioDAO uDAO=new UsuarioDAO();
 			if(!cajaId.getText().isEmpty()) {
-			Usuario usu= uDAO.buscar(Integer.parseInt(cajaId.getText()));
-			if(usu!=null) {
+			uDAO.setFiltro(Integer.parseInt(cajaId.getText()));
+			Thread hilo=new Thread(uDAO);
+			hilo.start();
+			if(bandera==1) {
+				Usuario usu= uDAO.buscar(Integer.parseInt(cajaId.getText()));
 				cajaCorreo.setText(usu.getCorreo());
 				cajaNombre.setText(usu.getNombre());
 				cajaPrimerAp.setText(usu.getPrimerAp());

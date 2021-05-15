@@ -10,9 +10,10 @@ import ConexionBD.ConexionBD;
 import modelo.Libro;
 import modelo.Usuario;
 import modelo.UsuarioAdministrador;
+import vista.ConsultaUsuario;
 
-public class UsuarioDAO {
-
+public class UsuarioDAO implements Runnable{
+	private int filtro;
 	public boolean insertarRegistro(Usuario a) {
 		boolean resultado=false;
 	
@@ -50,7 +51,7 @@ public class UsuarioDAO {
 			u1.setPrimerAp(rs.getString(3));
 			u1.setSegundoAp(rs.getString(4));
 			u1.setCorreo(rs.getString(5));
-			
+			ConsultaUsuario.bandera=1;
 			}else {
 				JOptionPane.showMessageDialog(null,"No existe el usuario");
 				return null;
@@ -61,5 +62,17 @@ public class UsuarioDAO {
 		
 		return u1;
 	}
+	@Override
+	public void run() {
+		buscar(this.filtro);
+		
+	}
+	public int getFiltro() {
+		return filtro;
+	}
+	public void setFiltro(int filtro) {
+		this.filtro = filtro;
+	}
+	
 	
 }

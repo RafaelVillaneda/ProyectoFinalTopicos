@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import ConexionBD.ConexionBD;
 import modelo.Libro;
 import modelo.Usuario;
+import vista.VentanaConsultasLibros;
 import vista.VentanaEliminarLibro;
 
 public class LibroDAO implements Runnable{
