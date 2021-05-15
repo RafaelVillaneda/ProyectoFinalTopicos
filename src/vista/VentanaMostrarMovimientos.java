@@ -50,7 +50,7 @@ public class VentanaMostrarMovimientos extends JInternalFrame{
 		
 		String controlador = "com.mysql.cj.jdbc.Driver";
 		String url = "jdbc:mysql://localhost:3306/libreria";
-		String consulta = "SELECT id_libro,id_usuario,DATE(fecha) AS fecha FROM movimientos";
+		String consulta = "SELECT id_movimiento,id_libro,id_usuario,DATE(fecha) AS fecha FROM movimientos";
 		
 		ResultSetTableModel modeloDatos=null;
 		

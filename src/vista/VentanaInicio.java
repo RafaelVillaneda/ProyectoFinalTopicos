@@ -136,7 +136,10 @@ public class VentanaInicio extends JFrame implements ActionListener{
 			ventanaRenta.setVisible(true);
 			add(dp);
 		}else if(e.getSource()==munuBajaLibrosMov) {
-			
+			VentanaDevolucionLibro vDev=new VentanaDevolucionLibro();
+			dp.add(vDev);
+			vDev.setVisible(true);
+			add(dp);
 		}else if(e.getSource()==menuMostrarMovimientos) {//GUI completa
 			VentanaMostrarMovimientos ventanaMovimientos=new VentanaMostrarMovimientos();
 			dp.add(ventanaMovimientos);
