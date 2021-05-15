@@ -40,7 +40,7 @@ public class LibroDAO {
 	}
 	public Libro buscar(int filtro){
 		Libro l1=new Libro();
-		String sql="SELECT * FROM libros WHERE id_libro ='"+filtro+"';";
+		String sql="SELECT * FROM libros WHERE id_libro ="+filtro+";";
 		
 		ResultSet rs=ConexionBD.ConsultarRegistro(sql);
 		
@@ -53,7 +53,6 @@ public class LibroDAO {
 				l1.setAutor(rs.getString(4));
 				l1.setEditorial(rs.getString(5));
 			}else {
-				JOptionPane.showMessageDialog(null,"No existe el usuario");
 				return null;
 			}
 		} catch (SQLException e) {

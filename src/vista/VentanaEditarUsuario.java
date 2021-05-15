@@ -193,8 +193,6 @@ public class VentanaEditarUsuario extends JInternalFrame implements ActionListen
 				cajaSegundoAp.setText(u2.getSegundoAp());
 				btnRescribir.setEnabled(true);
 				
-			}else {
-				JOptionPane.showMessageDialog(null,"Usuario no encontrado");
 			}
 			
 		}else if(e.getSource()==btnLimpiar) {

@@ -156,7 +156,7 @@ public class ConexionBD {
 	}
 	public static   boolean AgregarRegistroTablaMovimientos(Movimiento m) {
 		try {
-		      pstm = conexion.prepareStatement("insert into usuario_cliente values(null,?,?,null)");
+		      pstm = conexion.prepareStatement("insert into movimientos values(null,?,?,null)");
 		      
 		      pstm.setInt(1, m.getId_libro());
 		      pstm.setInt(2, m.getId_usuario());

@@ -23,7 +23,7 @@ public class VentanaInicio extends JFrame implements ActionListener{
 	JMenu menuAccionesUsuarios,menuAccionesLibros,menuConsultas;
 	JMenuItem menuAltasUsuarios,menuBajasUsuarios,menuEdicionUsuarios,menuConsultaUsuario,menuConsultasLibros;
 	
-	JMenuItem munuCargaBajaLibros,menuMostrarMovimientos,menuAltasLibros,menuBajasLibros;
+	JMenuItem munuBajaLibrosMov,menuMostrarMovimientos,menuAltasLibros,menuBajasLibros,menuAltasibrosMov;
 	
 	JInternalFrame IF_AltasUsuarios,IF_BajasUsuarios;
 	
@@ -71,8 +71,11 @@ public class VentanaInicio extends JFrame implements ActionListener{
 		
 			menuAccionesLibros=new JMenu("Acciones libros");
 			
-				munuCargaBajaLibros=new JMenuItem("Cargar/Devolver libro");
-				munuCargaBajaLibros.addActionListener(this);
+				munuBajaLibrosMov=new JMenuItem("Devolver libro");
+				munuBajaLibrosMov.addActionListener(this);
+				
+				menuAltasibrosMov=new JMenuItem("Rentar Libro");
+				menuAltasibrosMov.addActionListener(this);
 				
 				menuMostrarMovimientos=new JMenuItem("Mostrar movimientos en libros");
 				menuMostrarMovimientos.addActionListener(this);
@@ -83,7 +86,8 @@ public class VentanaInicio extends JFrame implements ActionListener{
 				menuBajasLibros=new JMenuItem("Eliminar libro");
 				menuBajasLibros.addActionListener(this);
 				
-			menuAccionesLibros.add(munuCargaBajaLibros);
+			menuAccionesLibros.add(munuBajaLibrosMov);
+			menuAccionesLibros.add(menuAltasibrosMov);
 			menuAccionesLibros.add(menuMostrarMovimientos);
 			menuAccionesLibros.add(menuAltasLibros);
 			menuAccionesLibros.add(menuBajasLibros);
@@ -126,11 +130,13 @@ public class VentanaInicio extends JFrame implements ActionListener{
 			dp.add(ventanaEdicion);
 			ventanaEdicion.setVisible(true);
 			add(dp);
-		}else if(e.getSource()==munuCargaBajaLibros) {//GUI en edicion 
-			VentanaCargaDescargaLibros ventanaRenta=new VentanaCargaDescargaLibros();
+		}else if(e.getSource()==menuAltasibrosMov) {//GUI en edicion 
+			VentanaAltasLibrosMovimientos ventanaRenta=new VentanaAltasLibrosMovimientos();
 			dp.add(ventanaRenta);
 			ventanaRenta.setVisible(true);
 			add(dp);
+		}else if(e.getSource()==munuBajaLibrosMov) {
+			
 		}else if(e.getSource()==menuMostrarMovimientos) {//GUI completa
 			VentanaMostrarMovimientos ventanaMovimientos=new VentanaMostrarMovimientos();
 			dp.add(ventanaMovimientos);

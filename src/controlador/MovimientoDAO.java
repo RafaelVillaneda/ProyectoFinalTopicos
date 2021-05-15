@@ -12,4 +12,15 @@ public class MovimientoDAO {
 		
 		return resultado;	
 	}
+	
+	public boolean eliminarRegistro(String idEliminar) {
+
+		String instruccion="DELETE FROM movimientos WHERE id_movimiento = "+Integer.parseInt(idEliminar)+";";
+        boolean resultado = false;
+		resultado = ConexionBD.EliminarRegistro(instruccion);
+		
+		return resultado;
+		
+	}//Modificar
+	
 }
