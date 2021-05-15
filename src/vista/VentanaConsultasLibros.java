@@ -126,6 +126,9 @@ public class VentanaConsultasLibros extends JInternalFrame implements ActionList
 			actualizarTabla();
 		}else if(e.getSource()==btnLimpiar) {
 			restablecer(cajaAutor,cajaEditorial,cajaGeneros,cajaId,cajatitulo);
+			seleccion=0;
+			actualizarTabla();
+			comboBusquedas.setSelectedIndex(0);
 		}else if(e.getSource()==btnRegresar) {
 			setVisible(false);
 		}else if(e.getSource()==comboBusquedas) {
