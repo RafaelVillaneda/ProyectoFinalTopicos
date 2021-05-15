@@ -22,6 +22,14 @@ public class MovimientoDAO {
 		return resultado;
 		
 	}//Modificar
+	public boolean eliminarRegistroPorLibro(String idEliminar) {
+
+		String instruccion="DELETE FROM movimientos WHERE id_libro = '"+idEliminar+"';";
+        boolean resultado = false;
+		resultado = ConexionBD.EliminarRegistro(instruccion);
+		
+		return resultado;
+	}//Modificar
 	
 	
 }

@@ -88,8 +88,9 @@ public class ConsultaUsuario extends JInternalFrame implements ActionListener{
 		
 		actualizarTabla();
 		JScrollPane scroll=new JScrollPane(tabla);
-		scroll.setBounds(0, 300, 300, 200);add(scroll);
+		scroll.setBounds(0, 270, 300, 80);add(scroll);
 		
+		setResizable(true);
 		
 		//Iconos botones
 		btnLimpiar=new JButton(iconoBorrar);

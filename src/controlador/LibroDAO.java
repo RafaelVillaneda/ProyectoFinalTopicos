@@ -19,15 +19,6 @@ public class LibroDAO {
 		
 		return resultado;	
 	}
-	public boolean eliminarRegistro(String sql) {
-		
-		// DELETE FROM libros WHERE id_libro = 'filtrio';
-		
-        boolean resultado = false;
-		resultado = ConexionBD.EliminarRegistro(sql);
-		
-		return resultado;
-	}//Modificar
 	public boolean modificarLibro(Libro a) {
 		boolean resultado = false;
 		String sql = "UPDATE libros SET nombre='"+a.getNombre()+"', genero='"+a.getGenero()+"', autor='"+a.getAutor()+"',"
@@ -61,6 +52,14 @@ public class LibroDAO {
 		
 		return l1;
 	}
+	public boolean eliminarRegistro(String idEliminar) {
+
+		String instruccion="DELETE FROM libros WHERE id_libro = '"+idEliminar+"';";
+        boolean resultado = false;
+		resultado = ConexionBD.EliminarRegistro(instruccion);
+		
+		return resultado;
+	}//Modificar
 	
 	
 }

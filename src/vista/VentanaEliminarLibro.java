@@ -20,6 +20,10 @@ import javax.swing.JSpinner;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 
+import controlador.LibroDAO;
+import controlador.MovimientoDAO;
+import modelo.Libro;
+
 public class VentanaEliminarLibro extends JInternalFrame implements ActionListener {
 
 	JTextField cajatitulo,cajaAutor,cajaEditorial,cajaGeneros,cajaId;
@@ -118,18 +122,47 @@ public class VentanaEliminarLibro extends JInternalFrame implements ActionListen
 		btnBuscar.addActionListener(this);
 		btnLimpiar.addActionListener(this);
 		btnRegresar.addActionListener(this);
-	
+		btnBorrar.addActionListener(this);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		LibroDAO lDAO=new LibroDAO();
 		if(e.getSource()==btnBuscar) {
-			//Busqueda
-			btnBorrar.setEnabled(true);
+			Libro libro=lDAO.buscar(Integer.parseInt(cajaId.getText()));
+			if(libro!=null) {
+				cajaAutor.setText(libro.getAutor());
+				cajaEditorial.setText(libro.getEditorial());
+				cajaGeneros.setText(libro.getGenero());
+				cajatitulo.setText(libro.getNombre());
+				btnBorrar.setEnabled(true);
+			}else {
+				
+			}
 		}else if(e.getSource()==btnLimpiar) {
 			restablecer(cajaAutor,cajaEditorial,cajaGeneros,cajaId,cajatitulo);
 		}else if(e.getSource()==btnRegresar) {
 			setVisible(false);
+		}else if(e.getSource()==btnBorrar) {
+			if(JOptionPane.showConfirmDialog(null, "Si eliminas un libro tambien se eliminaran sus referencias en movimientos"
+					+ " ten encuenta que esta accion no se puede revertir ¿Deseas continuar?")==0) {
+				MovimientoDAO m=new MovimientoDAO();
+				if(m.eliminarRegistroPorLibro(cajaId.getText())) {
+						boolean bandera=lDAO.eliminarRegistro(cajaId.getText());
+						if(bandera) {
+							JOptionPane.showMessageDialog(null,"Se elimino el registro correctamente");
+							actualizarTabla();
+						}else {
+							JOptionPane.showMessageDialog(null,"No se pudo eliminar");
+						}
+				}
+			}else {
+				JOptionPane.showConfirmDialog(null,"Accion cancelada");
+				btnBorrar.setEnabled(false);
+				restablecer(cajaAutor,cajaEditorial,cajaGeneros,cajaId,cajatitulo);
+			}
+			
+			
 		}
 		
 	}
