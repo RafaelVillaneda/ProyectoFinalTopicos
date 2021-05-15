@@ -140,7 +140,6 @@ public class VentanaConsultasLibros extends JInternalFrame implements ActionList
 				cajaEditorial.setEnabled(false);
 				cajaGeneros.setEnabled(false);
 				cajatitulo.setEnabled(false);
-				System.out.println(seleccion+"-->"+comboBusquedas.getSelectedItem());
 			}else if(comboBusquedas.getSelectedIndex()==2) {
 				seleccion=2;
 				btnBuscar.setEnabled(true);
@@ -149,7 +148,6 @@ public class VentanaConsultasLibros extends JInternalFrame implements ActionList
 				cajaEditorial.setEnabled(false);
 				cajaGeneros.setEnabled(false);
 				cajatitulo.setEnabled(false);
-				System.out.println(seleccion+"-->"+comboBusquedas.getSelectedItem());
 			}else if(comboBusquedas.getSelectedIndex()==3) {
 				seleccion=3;
 				btnBuscar.setEnabled(true);
@@ -158,7 +156,6 @@ public class VentanaConsultasLibros extends JInternalFrame implements ActionList
 				cajaEditorial.setEnabled(true);
 				cajaGeneros.setEnabled(false);
 				cajatitulo.setEnabled(false);
-				System.out.println(seleccion+"-->"+comboBusquedas.getSelectedItem());
 			}else if(comboBusquedas.getSelectedIndex()==4) {
 				seleccion=4;
 				btnBuscar.setEnabled(true);
@@ -167,7 +164,6 @@ public class VentanaConsultasLibros extends JInternalFrame implements ActionList
 				cajaEditorial.setEnabled(false);
 				cajaGeneros.setEnabled(true);
 				cajatitulo.setEnabled(false);
-				System.out.println(seleccion+"-->"+comboBusquedas.getSelectedItem());
 			}else if(comboBusquedas.getSelectedIndex()==5) {
 				seleccion=5;
 				btnBuscar.setEnabled(true);
@@ -176,7 +172,6 @@ public class VentanaConsultasLibros extends JInternalFrame implements ActionList
 				cajaEditorial.setEnabled(false);
 				cajaGeneros.setEnabled(false);
 				cajatitulo.setEnabled(true);
-				System.out.println(seleccion+"-->"+comboBusquedas.getSelectedItem());
 			}else if(comboBusquedas.getSelectedIndex()==0) {
 				seleccion=0;
 				btnBuscar.setEnabled(false);
@@ -185,7 +180,6 @@ public class VentanaConsultasLibros extends JInternalFrame implements ActionList
 				cajaEditorial.setEnabled(false);
 				cajaGeneros.setEnabled(false);
 				cajatitulo.setEnabled(false);
-				System.out.println(seleccion+"-->"+comboBusquedas.getSelectedItem());
 				actualizarTabla();
 			}else if(comboBusquedas.getSelectedIndex()==6) {
 				seleccion=6;
@@ -195,7 +189,6 @@ public class VentanaConsultasLibros extends JInternalFrame implements ActionList
 				cajaEditorial.setEnabled(true);
 				cajaGeneros.setEnabled(true);
 				cajatitulo.setEnabled(true);
-				System.out.println(seleccion+"-->"+comboBusquedas.getSelectedItem());
 			}
 		}
 		

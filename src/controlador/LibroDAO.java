@@ -9,10 +9,15 @@ import javax.swing.JOptionPane;
 import ConexionBD.ConexionBD;
 import modelo.Libro;
 import modelo.Usuario;
+import vista.VentanaEliminarLibro;
 
-public class LibroDAO {
+public class LibroDAO implements Runnable{
 	
-	public boolean insertarRegistro(Libro a) {
+	private int filtro;
+	
+	
+	
+	public boolean insertarRegistro(Libro a){
 		boolean resultado=false;
 	
 		resultado=ConexionBD.AgregarRegistroTablaLibros(a);
@@ -48,8 +53,8 @@ public class LibroDAO {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}
-		
+		}//0==no 1==si
+		VentanaEliminarLibro.bandera=1;
 		return l1;
 	}
 	public boolean eliminarRegistro(String idEliminar) {
@@ -60,6 +65,16 @@ public class LibroDAO {
 		
 		return resultado;
 	}//Modificar
+	
+	@Override
+	public void run() {
+		buscar(this.filtro);
+		
+	}
+	public void setFiltro(int filtro) {
+		this.filtro = filtro;
+	}
+	
 	
 	
 }

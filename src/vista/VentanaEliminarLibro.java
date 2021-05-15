@@ -35,7 +35,7 @@ public class VentanaEliminarLibro extends JInternalFrame implements ActionListen
 	ImageIcon iconoBorrar=new ImageIcon("./recursos/216658.png");
 	
 	JTable tablaLibros=new JTable(5,5);
-	
+	public static byte bandera;
 	public VentanaEliminarLibro() {
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -108,8 +108,6 @@ public class VentanaEliminarLibro extends JInternalFrame implements ActionListen
 			public void keyTyped(KeyEvent e) {
 				char car = e.getKeyChar();
 				if(Character.isDigit(car)){
-					//String cadena=txtNombre.getText();
-					//txtNumControl.setText(cadena+e);
 				}else{
 				e.consume();
 				getToolkit().beep();
@@ -129,8 +127,11 @@ public class VentanaEliminarLibro extends JInternalFrame implements ActionListen
 	public void actionPerformed(ActionEvent e) {
 		LibroDAO lDAO=new LibroDAO();
 		if(e.getSource()==btnBuscar) {
-			Libro libro=lDAO.buscar(Integer.parseInt(cajaId.getText()));
-			if(libro!=null) {
+			lDAO.setFiltro(Integer.parseInt(cajaId.getText()));
+			Thread hilo=new Thread(lDAO);
+			hilo.start();
+			if(bandera==1) {
+				Libro libro=lDAO.buscar(Integer.parseInt(cajaId.getText()));
 				cajaAutor.setText(libro.getAutor());
 				cajaEditorial.setText(libro.getEditorial());
 				cajaGeneros.setText(libro.getGenero());
