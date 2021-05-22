@@ -104,11 +104,8 @@ public class VentanaAgregarUsuarios extends JInternalFrame implements ActionList
 			public void keyTyped(KeyEvent e) {
 				char car = e.getKeyChar();
 				if(Character.isLetter(car) || Character.isSpaceChar(car)){
-					//String cadena=txtNombre.getText();
-					//txtNumControl.setText(cadena+e);
 				}else{
 				e.consume();
-				getToolkit().beep();
 				}
 			}
 			@Override public void keyPressed(KeyEvent e) {}
@@ -121,11 +118,8 @@ public class VentanaAgregarUsuarios extends JInternalFrame implements ActionList
 			public void keyTyped(KeyEvent e) {
 				char car = e.getKeyChar();
 				if(Character.isLetter(car) || Character.isSpaceChar(car)){
-					//String cadena=txtNombre.getText();
-					//txtNumControl.setText(cadena+e);
 				}else{
 				e.consume();
-				getToolkit().beep();
 				}
 			}
 			@Override public void keyPressed(KeyEvent e) {}
@@ -138,11 +132,8 @@ public class VentanaAgregarUsuarios extends JInternalFrame implements ActionList
 			public void keyTyped(KeyEvent e) {
 				char car = e.getKeyChar();
 				if(Character.isLetter(car) || Character.isSpaceChar(car)){
-					//String cadena=txtNombre.getText();
-					//txtNumControl.setText(cadena+e);
 				}else{
 				e.consume();
-				getToolkit().beep();
 				}
 			}
 			@Override public void keyPressed(KeyEvent e) {}

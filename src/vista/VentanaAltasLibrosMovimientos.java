@@ -101,7 +101,6 @@ public class VentanaAltasLibrosMovimientos extends JInternalFrame implements Act
 				char car = e.getKeyChar();
 				if(Character.isDigit(car)){}else{
 				e.consume();
-				getToolkit().beep();
 				}
 			}
 			@Override public void keyPressed(KeyEvent e) {}

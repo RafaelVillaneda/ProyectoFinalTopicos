@@ -110,11 +110,8 @@ public class VentanaEditarUsuario extends JInternalFrame implements ActionListen
 			public void keyTyped(KeyEvent e) {
 				char car = e.getKeyChar();
 				if(Character.isDigit(car)){
-					//String cadena=txtNombre.getText();
-					//txtNumControl.setText(cadena+e);
 				}else{
 				e.consume();
-				getToolkit().beep();
 				}
 			}
 			@Override public void keyPressed(KeyEvent e) {}
@@ -127,11 +124,8 @@ public class VentanaEditarUsuario extends JInternalFrame implements ActionListen
 			public void keyTyped(KeyEvent e) {
 				char car = e.getKeyChar();
 				if(Character.isLetter(car) || Character.isSpaceChar(car)){
-					//String cadena=txtNombre.getText();
-					//txtNumControl.setText(cadena+e);
 				}else{
 				e.consume();
-				getToolkit().beep();
 				}
 			}
 			@Override public void keyPressed(KeyEvent e) {}
@@ -144,11 +138,8 @@ public class VentanaEditarUsuario extends JInternalFrame implements ActionListen
 			public void keyTyped(KeyEvent e) {
 				char car = e.getKeyChar();
 				if(Character.isLetter(car) || Character.isSpaceChar(car)){
-					//String cadena=txtNombre.getText();
-					//txtNumControl.setText(cadena+e);
 				}else{
 				e.consume();
-				getToolkit().beep();
 				}
 			}
 			@Override public void keyPressed(KeyEvent e) {}
@@ -161,11 +152,8 @@ public class VentanaEditarUsuario extends JInternalFrame implements ActionListen
 			public void keyTyped(KeyEvent e) {
 				char car = e.getKeyChar();
 				if(Character.isLetter(car) || Character.isSpaceChar(car)){
-					//String cadena=txtNombre.getText();
-					//txtNumControl.setText(cadena+e);
 				}else{
 				e.consume();
-				getToolkit().beep();
 				}
 			}
 			@Override public void keyPressed(KeyEvent e) {}

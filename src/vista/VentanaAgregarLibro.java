@@ -111,7 +111,6 @@ public class VentanaAgregarLibro extends JInternalFrame implements ActionListene
 					//txtNumControl.setText(cadena+e);
 				}else{
 				e.consume();
-				getToolkit().beep();
 				}
 			}
 			@Override public void keyPressed(KeyEvent e) {}
@@ -127,7 +126,6 @@ public class VentanaAgregarLibro extends JInternalFrame implements ActionListene
 					//txtNumControl.setText(cadena+e);
 				}else{
 				e.consume();
-				getToolkit().beep();
 				}
 			}
 			@Override public void keyPressed(KeyEvent e) {}
@@ -143,7 +141,6 @@ public class VentanaAgregarLibro extends JInternalFrame implements ActionListene
 					//txtNumControl.setText(cadena+e);
 				}else{
 				e.consume();
-				getToolkit().beep();
 				}
 			}
 			@Override public void keyPressed(KeyEvent e) {}
@@ -159,7 +156,6 @@ public class VentanaAgregarLibro extends JInternalFrame implements ActionListene
 					//txtNumControl.setText(cadena+e);
 				}else{
 				e.consume();
-				getToolkit().beep();
 				}
 			}
 			@Override public void keyPressed(KeyEvent e) {}
@@ -177,12 +173,18 @@ public class VentanaAgregarLibro extends JInternalFrame implements ActionListene
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==btnAgregarLibro) {
-			Libro libro=new Libro(cajatitulo.getText(), cajaGeneros.getText(), cajaAutor.getText(), cajaEditorial.getText(),0);
-			if(ConexionBD.AgregarRegistroTablaLibros(libro)) {
-				JOptionPane.showMessageDialog(null,"Se agrego el libro correctamente");
-				actualizarTabla();
+			
+				if(validarCajasVacias()){
+				Libro libro=new Libro(cajatitulo.getText(), cajaGeneros.getText(), cajaAutor.getText(), cajaEditorial.getText(),0);
+				if(ConexionBD.AgregarRegistroTablaLibros(libro)) {
+					JOptionPane.showMessageDialog(null,"Se agrego el libro correctamente");
+					actualizarTabla();
+					restablecer(cajaAutor,cajaEditorial,cajaGeneros,cajatitulo);
+				}else {
+					JOptionPane.showMessageDialog(rootPane,"No se agrego el libro","Error",JOptionPane.ERROR_MESSAGE);
+				}
 			}else {
-				JOptionPane.showMessageDialog(rootPane,"No se agrego el libro","Error",JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null,"Debes de llenar todos los campos");
 			}
 		}else if(e.getSource()==btnLimpiar) {
 			restablecer(cajaAutor,cajaEditorial,cajaGeneros,cajatitulo);
@@ -221,6 +223,19 @@ public class VentanaAgregarLibro extends JInternalFrame implements ActionListene
 		}
 		
 	}//Restablecer
+	public boolean validarCajasVacias() {
+		if(cajaAutor.getText().isEmpty()) {
+			return false;
+		}else if(cajaEditorial.getText().isEmpty()) {
+			return false;
+		}else if(cajaGeneros.getText().isEmpty()) {
+			return false;
+		}else if(cajatitulo.getText().isEmpty()) {
+			return false;
+		}
+		return true;
+	}
+	
 	
 	
 	

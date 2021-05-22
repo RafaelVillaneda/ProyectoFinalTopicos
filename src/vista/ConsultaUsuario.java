@@ -122,7 +122,6 @@ public class ConsultaUsuario extends JInternalFrame implements ActionListener{
 					//txtNumControl.setText(cadena+e);
 				}else{
 				e.consume();
-				getToolkit().beep();
 				}
 			}
 			@Override public void keyPressed(KeyEvent e) {}
@@ -139,7 +138,6 @@ public class ConsultaUsuario extends JInternalFrame implements ActionListener{
 					//txtNumControl.setText(cadena+e);
 				}else{
 				e.consume();
-				getToolkit().beep();
 				}
 			}
 			@Override public void keyPressed(KeyEvent e) {}
@@ -156,7 +154,6 @@ public class ConsultaUsuario extends JInternalFrame implements ActionListener{
 					//txtNumControl.setText(cadena+e);
 				}else{
 				e.consume();
-				getToolkit().beep();
 				}
 			}
 			@Override public void keyPressed(KeyEvent e) {}

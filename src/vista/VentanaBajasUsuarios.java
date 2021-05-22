@@ -107,7 +107,6 @@ public class VentanaBajasUsuarios extends JInternalFrame implements ActionListen
 				if(Character.isDigit(car)){
 				}else{
 				e.consume();
-				getToolkit().beep();
 				}
 			}
 			@Override public void keyPressed(KeyEvent e) {}

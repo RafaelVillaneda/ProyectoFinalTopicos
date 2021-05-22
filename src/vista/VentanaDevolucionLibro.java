@@ -93,7 +93,6 @@ public class VentanaDevolucionLibro extends JInternalFrame implements ActionList
 				char car = e.getKeyChar();
 				if(Character.isDigit(car)){}else{
 				e.consume();
-				getToolkit().beep();
 				}
 			}
 			@Override public void keyPressed(KeyEvent e) {}
