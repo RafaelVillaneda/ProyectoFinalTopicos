@@ -143,7 +143,7 @@ public class VentanaAltasLibrosMovimientos extends JInternalFrame implements Act
 							restablecer(cajaIdLibro,cajaIdUsuario);
 						}
 					}else {
-						JOptionPane.showMessageDialog(null,"Usuario no encontrado");
+						//JOptionPane.showMessageDialog(null,"Usuario no encontrado");
 					}
 				}else {
 					JOptionPane.showMessageDialog(null,"Libro no encontrado");

@@ -186,6 +186,7 @@ public class VentanaEditarLibros extends JInternalFrame implements ActionListene
 				
 		}else if(e.getSource()==btnLimpiar) {
 			restablecer(cajaAutor,cajaEditorial,cajaGeneros,cajaId,cajatitulo);
+			btnRescribir.setEnabled(false);
 		}else if(e.getSource()==btnRegresar) {
 			setVisible(false);
 		}else if(e.getSource()==btnRescribir) {
@@ -207,6 +208,7 @@ public class VentanaEditarLibros extends JInternalFrame implements ActionListene
 			}else {
 				JOptionPane.showMessageDialog(null,"NO se modifico el libro");
 			}
+			btnRescribir.setEnabled(false);
 		}
 		
 	}

@@ -127,6 +127,7 @@ public class VentanaEliminarLibro extends JInternalFrame implements ActionListen
 	public void actionPerformed(ActionEvent e) {
 		LibroDAO lDAO=new LibroDAO();
 		if(e.getSource()==btnBuscar) {
+			if(!cajaId.getText().isEmpty()) {
 			lDAO.setFiltro(Integer.parseInt(cajaId.getText()));
 			Thread hilo=new Thread(lDAO);
 			hilo.start();
@@ -137,9 +138,9 @@ public class VentanaEliminarLibro extends JInternalFrame implements ActionListen
 				cajaGeneros.setText(libro.getGenero());
 				cajatitulo.setText(libro.getNombre());
 				btnBorrar.setEnabled(true);
-			}else {
-				
+				bandera=0;
 			}
+		}
 		}else if(e.getSource()==btnLimpiar) {
 			restablecer(cajaAutor,cajaEditorial,cajaGeneros,cajaId,cajatitulo);
 		}else if(e.getSource()==btnRegresar) {
@@ -165,7 +166,7 @@ public class VentanaEliminarLibro extends JInternalFrame implements ActionListen
 				restablecer(cajaAutor,cajaEditorial,cajaGeneros,cajaId,cajatitulo);
 			}
 			
-			
+			btnBorrar.setEnabled(false);
 		}
 		
 	}
@@ -199,6 +200,7 @@ public class VentanaEliminarLibro extends JInternalFrame implements ActionListen
 				((JSpinner)Component).setValue(0);;
 			}
 		}
+		btnBorrar.setEnabled(false);
 		
 	}//Restablecer
 	

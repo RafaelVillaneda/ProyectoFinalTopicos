@@ -4,6 +4,8 @@ import java.awt.Color;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -53,6 +55,22 @@ public class VentanaLogin extends JFrame{
 		txtContraseña.setBounds(80, 175, 150, 20);
 		add(txtContraseña);
 		//-----------------------------------Botones-----------------------------------------
+		txtIdUsuario.addKeyListener(new KeyListener() {
+			
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char car = e.getKeyChar();
+				if(Character.isDigit(car)){
+				}else{
+				e.consume();
+				}
+			}
+			
+			@Override
+			public void keyReleased(KeyEvent e) {}
+			@Override
+			public void keyPressed(KeyEvent e) {}
+		});
 		
 		btnIngresar.setBounds(80, 215, 150, 30);
 		btnIngresar.setIcon(new ImageIcon(iconoboton.getImage().getScaledInstance(150, 30, Image.SCALE_SMOOTH)));
