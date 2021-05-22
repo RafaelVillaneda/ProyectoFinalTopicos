@@ -114,11 +114,12 @@ public class VentanaDevolucionLibro extends JInternalFrame implements ActionList
 			setVisible(false);
 		}else if(e.getSource()==btnBorrarMov) {
 			if(!validarCajasVacias()) {
-				
-				boolean bandera=mDAO.eliminarRegistro(cajaIDMOv.getText());
+				boolean bandera=false;
+				bandera=mDAO.eliminarRegistro(cajaIDMOv.getText());
 				if(bandera) {
 					JOptionPane.showMessageDialog(null,"Se elimino el registro corretamente");
 					actualizarTabla();
+					restablecer(cajaIDMOv);
 				}else {
 					JOptionPane.showMessageDialog(null,"NO se elimino el registro");	
 				}

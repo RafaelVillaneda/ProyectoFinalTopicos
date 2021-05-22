@@ -139,6 +139,8 @@ public class VentanaAltasLibrosMovimientos extends JInternalFrame implements Act
 						boolean agregado=ConexionBD.AgregarRegistroTablaMovimientos(new Movimiento(0, libritoLibro.getIDLibro(), usu.getId(), null));      
 						if (agregado) {
 							JOptionPane.showMessageDialog(null,"El libro se rento con exito");
+							actualizarTabla();
+							restablecer(cajaIdLibro,cajaIdUsuario);
 						}
 					}else {
 						JOptionPane.showMessageDialog(null,"Usuario no encontrado");

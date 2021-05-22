@@ -23,7 +23,7 @@ public class VentanaInicio extends JFrame implements ActionListener{
 	JMenu menuAccionesUsuarios,menuAccionesLibros,menuConsultas;
 	JMenuItem menuAltasUsuarios,menuBajasUsuarios,menuEdicionUsuarios,menuConsultaUsuario,menuConsultasLibros;
 	
-	JMenuItem munuBajaLibrosMov,menuMostrarMovimientos,menuAltasLibros,menuBajasLibros,menuAltasibrosMov;
+	JMenuItem munuBajaLibrosMov,menuMostrarMovimientos,menuAltasLibros,menuBajasLibros,menuAltasibrosMov,menuEditarLibros;
 	
 	JInternalFrame IF_AltasUsuarios,IF_BajasUsuarios;
 	
@@ -86,11 +86,15 @@ public class VentanaInicio extends JFrame implements ActionListener{
 				menuBajasLibros=new JMenuItem("Eliminar libro");
 				menuBajasLibros.addActionListener(this);
 				
+				menuEditarLibros=new JMenuItem("Editar libro");
+				menuEditarLibros.addActionListener(this);
+				
 			menuAccionesLibros.add(munuBajaLibrosMov);
 			menuAccionesLibros.add(menuAltasibrosMov);
 			menuAccionesLibros.add(menuMostrarMovimientos);
 			menuAccionesLibros.add(menuAltasLibros);
 			menuAccionesLibros.add(menuBajasLibros);
+			menuAccionesLibros.add(menuEditarLibros);
 		
 			//Menu item Consultas
 			menuConsultas =new JMenu("Consultas");
@@ -164,6 +168,11 @@ public class VentanaInicio extends JFrame implements ActionListener{
 			VentanaConsultasLibros consulta=new VentanaConsultasLibros();
 			dp.add(consulta);
 			consulta.setVisible(true);
+			add(dp);
+		}else if(e.getSource()==menuEditarLibros) {
+			VentanaEditarLibros ven=new VentanaEditarLibros();
+			dp.add(ven);
+			ven.setVisible(true);
 			add(dp);
 		}
 		

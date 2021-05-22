@@ -24,25 +24,24 @@ import controlador.LibroDAO;
 import controlador.MovimientoDAO;
 import modelo.Libro;
 
-public class VentanaEliminarLibro extends JInternalFrame implements ActionListener {
+public class VentanaEditarLibros extends JInternalFrame implements ActionListener{
 
 	JTextField cajatitulo,cajaAutor,cajaEditorial,cajaGeneros,cajaId;
-	JButton btnBuscar,btnLimpiar,btnRegresar,btnBorrar;
+	JButton btnBuscar,btnLimpiar,btnRegresar,btnRescribir;
 	
 	ImageIcon iconoRegresar=new ImageIcon("./recursos/Regresar.png");
 	ImageIcon iconoLimpiar=new ImageIcon("./recursos/Restablecer.png");
 	ImageIcon iconoBuscar=new ImageIcon("./recursos/lupa.png");
-	ImageIcon iconoBorrar=new ImageIcon("./recursos/216658.png");
+	ImageIcon iconoEditar=new ImageIcon("./recursos/Rescribir.png");
 	
 	JTable tablaLibros=new JTable(5,5);
-	public static byte bandera;
-	public VentanaEliminarLibro() {
+	public VentanaEditarLibros() {
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setSize(350, 400);
 		setVisible(true);
 		this.getContentPane().setBackground(new Color(48, 158, 125));
-		setTitle("Eliminar libro");
+		setTitle("Editar libro");
 		
 		//Incicalizar------
 		
@@ -89,11 +88,11 @@ public class VentanaEliminarLibro extends JInternalFrame implements ActionListen
 		btnRegresar.setIcon(new ImageIcon(iconoRegresar.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH)));
 		btnRegresar.setBounds(10, 180, 50, 50);add(btnRegresar);
 		
-		btnBorrar=new JButton(iconoBorrar);
-		btnBorrar.setIcon(new ImageIcon(iconoBorrar.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH)));
-		btnBorrar.setBounds(145, 180, 50, 50);add(btnBorrar);
+		btnRescribir=new JButton(iconoEditar);
+		btnRescribir.setIcon(new ImageIcon(iconoEditar.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH)));
+		btnRescribir.setBounds(145, 180, 50, 50);add(btnRescribir);
 		
-		btnLimpiar=new JButton(iconoLimpiar);btnBorrar.setEnabled(false);
+		btnLimpiar=new JButton(iconoLimpiar);btnRescribir.setEnabled(false);
 		btnLimpiar.setIcon(new ImageIcon(iconoLimpiar.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH)));
 		btnLimpiar.setBounds(275, 180, 50, 50);add(btnLimpiar);
 		
@@ -119,7 +118,7 @@ public class VentanaEliminarLibro extends JInternalFrame implements ActionListen
 		btnBuscar.addActionListener(this);
 		btnLimpiar.addActionListener(this);
 		btnRegresar.addActionListener(this);
-		btnBorrar.addActionListener(this);
+		btnRescribir.addActionListener(this);
 	}
 
 	@Override
@@ -127,44 +126,45 @@ public class VentanaEliminarLibro extends JInternalFrame implements ActionListen
 		LibroDAO lDAO=new LibroDAO();
 		if(e.getSource()==btnBuscar) {
 			lDAO.setFiltro(Integer.parseInt(cajaId.getText()));
-			Thread hilo=new Thread(lDAO);
-			hilo.start();
-			if(bandera==1) {
 				Libro libro=lDAO.buscar(Integer.parseInt(cajaId.getText()));
+				if(libro!=null) {
 				cajaAutor.setText(libro.getAutor());
 				cajaEditorial.setText(libro.getEditorial());
 				cajaGeneros.setText(libro.getGenero());
 				cajatitulo.setText(libro.getNombre());
-				btnBorrar.setEnabled(true);
-			}else {
+				btnRescribir.setEnabled(true);
 				
-			}
+				cajaAutor.setEnabled(true);
+				cajaEditorial.setEnabled(true);
+				cajaGeneros.setEnabled(true);
+				cajatitulo.setEnabled(true);
+				}else {
+					JOptionPane.showMessageDialog(null,"No se encontro el libro");
+				}
+				
 		}else if(e.getSource()==btnLimpiar) {
 			restablecer(cajaAutor,cajaEditorial,cajaGeneros,cajaId,cajatitulo);
 		}else if(e.getSource()==btnRegresar) {
 			setVisible(false);
-		}else if(e.getSource()==btnBorrar) {
-			if(JOptionPane.showConfirmDialog(null, "Si eliminas un libro tambien se eliminaran sus referencias en movimientos"
-					+ " ten encuenta que esta accion no se puede revertir ¿Deseas continuar?")==0) {
-				MovimientoDAO m=new MovimientoDAO();
-				if(m.eliminarRegistroPorLibro(cajaId.getText())) {
-						boolean bandera=lDAO.eliminarRegistro(cajaId.getText());
-						if(bandera) {
-							JOptionPane.showMessageDialog(null,"Se elimino el registro correctamente");
-							actualizarTabla();
-							restablecer(cajaAutor,cajaEditorial,cajaGeneros,cajaId,cajatitulo);
-						}else {
-							JOptionPane.showMessageDialog(null,"No se pudo eliminar");
-							restablecer(cajaAutor,cajaEditorial,cajaGeneros,cajaId,cajatitulo);
-						}
-				}
-			}else {
-				JOptionPane.showConfirmDialog(null,"Accion cancelada");
-				btnBorrar.setEnabled(false);
+		}else if(e.getSource()==btnRescribir) {
+			Libro librito=new Libro();
+			librito.setAutor(cajaAutor.getText());
+			librito.setEditorial(cajaEditorial.getText());
+			librito.setGenero(cajaGeneros.getText());
+			librito.setIDLibro(Integer.parseInt(cajaId.getText()));
+			librito.setNombre(cajatitulo.getText());
+			boolean bandera=lDAO.modificarLibro(librito);
+			if(bandera) {
+				JOptionPane.showMessageDialog(null,"Se modifico correctamente el libro");
+				actualizarTabla();
 				restablecer(cajaAutor,cajaEditorial,cajaGeneros,cajaId,cajatitulo);
+				cajaAutor.setEnabled(false);
+				cajaEditorial.setEnabled(false);
+				cajaGeneros.setEnabled(false);
+				cajatitulo.setEnabled(false);
+			}else {
+				JOptionPane.showMessageDialog(null,"NO se modifico el libro");
 			}
-			
-			
 		}
 		
 	}

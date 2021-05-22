@@ -158,6 +158,7 @@ public class VentanaAgregarUsuarios extends JInternalFrame implements ActionList
 				u.setSegundoAp(cajaSegundoAp.getText());
 				if(uDAO.insertarRegistro(u)) {
 					JOptionPane.showMessageDialog(null,"Se agrego el usuario correctamente");
+					restablecer(cajaCorreo,cajaId,cajaNombre,cajaPrimerAp,cajaSegundoAp);
 				}else {
 					JOptionPane.showMessageDialog(null,"NO SE AGREGO EL USUARIO");
 				}

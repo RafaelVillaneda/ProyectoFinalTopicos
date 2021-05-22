@@ -27,13 +27,9 @@ public class LibroDAO implements Runnable{
 	}
 	public boolean modificarLibro(Libro a) {
 		boolean resultado = false;
-		String sql = "UPDATE libros SET nombre='"+a.getNombre()+"', genero='"+a.getGenero()+"', autor='"+a.getAutor()+"',"
-				+ "              editorial = '"+a.getEditorial()+"';";
+		resultado=ConexionBD.ActualizarRegistro(a);
 		
-		sql="UPDATE libros SET nombre=? where id_libro="+a.getIDLibro()+"";
-		ConexionBD.ActualizarRegistro(a);
-		
-		return false;
+		return resultado;
 	}
 	public Libro buscar(int filtro){
 		Libro l1=new Libro();

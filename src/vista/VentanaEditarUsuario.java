@@ -196,6 +196,7 @@ public class VentanaEditarUsuario extends JInternalFrame implements ActionListen
 			
 				if(uDAO.modificarUsuario(usuario)) {
 					JOptionPane.showMessageDialog(null,"Registro actualizado");
+					restablecer(cajaCorreo,cajaId,cajaNombre,cajaPrimerAp,cajaSegundoAp);
 				}else {
 					JOptionPane.showMessageDialog(null,"Registro NO actualizado");
 				}
