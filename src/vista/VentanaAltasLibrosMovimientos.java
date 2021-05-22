@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.sql.SQLException;
 
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
@@ -17,6 +18,10 @@ import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
+import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
+import javax.swing.JSpinner;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 
 import ConexionBD.ConexionBD;
@@ -35,16 +40,18 @@ public class VentanaAltasLibrosMovimientos extends JInternalFrame implements Act
 	ImageIcon iconoLimpiar=new ImageIcon("./recursos/Restablecer.png");
 	ImageIcon iconoAgregar=new ImageIcon("./recursos/AgregarLibro.png");
 	
+	JTable tablaMov=new JTable();
+	
 	public VentanaAltasLibrosMovimientos() {
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setSize(300, 250);
+		setSize(300, 400);
 		setVisible(true);
 		this.getContentPane().setBackground(new Color(48, 158, 125));
 		setTitle("Renta libros");
 		
 		setIconifiable(true);//Minimizar
-		setResizable(true);//Cambiar tamaño
+		setResizable(false);//Cambiar tamaño
 		//setClosable(true);//Cerrar
 		
 		cajaIdLibro=new JTextField(10);
@@ -81,6 +88,11 @@ public class VentanaAltasLibrosMovimientos extends JInternalFrame implements Act
 		btncancelar.addActionListener(this);
 		btnBorrar.addActionListener(this);
 		btnAgregarMov.addActionListener(this);
+		
+		actualizarTabla();
+		JScrollPane scroll=new JScrollPane(tablaMov);
+		scroll.setBounds(10, 190, 250, 100);add(scroll);
+		
 		//Validar cajas
 		cajaIdLibro.addKeyListener(new KeyListener() {
 			
@@ -103,7 +115,6 @@ public class VentanaAltasLibrosMovimientos extends JInternalFrame implements Act
 				char car = e.getKeyChar();
 				if(Character.isDigit(car)){}else{
 				e.consume();
-				getToolkit().beep();
 				}
 			}
 			@Override public void keyPressed(KeyEvent e) {}
@@ -126,7 +137,12 @@ public class VentanaAltasLibrosMovimientos extends JInternalFrame implements Act
 				if(libritoLibro!=null){
 					Usuario usu=uDAO.buscar(Integer.parseInt(cajaIdUsuario.getText()));
 					if(usu!=null) {
-						ConexionBD.AgregarRegistroTablaMovimientos(new Movimiento(0, libritoLibro.getIDLibro(), usu.getId(), null));       
+						boolean agregado=ConexionBD.AgregarRegistroTablaMovimientos(new Movimiento(0, libritoLibro.getIDLibro(), usu.getId(), null));      
+						if (agregado) {
+							JOptionPane.showMessageDialog(null,"El libro se rento con exito");
+						}
+					}else {
+						JOptionPane.showMessageDialog(null,"Usuario no encontrado");
 					}
 				}else {
 					JOptionPane.showMessageDialog(null,"Libro no encontrado");
@@ -158,5 +174,24 @@ public class VentanaAltasLibrosMovimientos extends JInternalFrame implements Act
 		}
 		
 	}//Restablecer
+public void actualizarTabla() {
+		
+		String controlador = "com.mysql.cj.jdbc.Driver";
+		String url = "jdbc:mysql://localhost:3306/libreria";
+		String consulta = "SELECT id_movimiento,id_libro,id_usuario,DATE(fecha) AS fecha FROM movimientos";
+		
+		ResultSetTableModel modeloDatos=null;
+		
+		try {
+			modeloDatos = new ResultSetTableModel(controlador, url, consulta);
+		} catch (ClassNotFoundException e1) {
+			e1.printStackTrace();
+		} catch (SQLException e1) {
+			e1.printStackTrace();
+		}
+		tablaMov.setModel(modeloDatos);
+		//scroll.setPreferredSize( 400, 600 );
+		
+	}
 	
 }

@@ -14,7 +14,7 @@ import modelo.Usuario;
 public class ConexionBD {
 
 	private static Connection conexion=null;
-	private static PreparedStatement pstm; //NO es tan seguro ya que permite SQL Injection, se recomienda PreparedStatement
+	private static PreparedStatement pstm; 
 	private static ResultSet rs;
 	
 	private ConexionBD() {
