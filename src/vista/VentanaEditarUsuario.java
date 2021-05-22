@@ -42,7 +42,7 @@ public class VentanaEditarUsuario extends JInternalFrame implements ActionListen
 		setTitle("Editar Usuario");
 		
 		setIconifiable(true);//Minimizar
-		setResizable(true);//Cambiar tamaño
+		setResizable(false);//Cambiar tamaño
 		setClosable(true);//Cerrar
 		
 		//Inicializar componentes

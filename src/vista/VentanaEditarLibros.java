@@ -42,7 +42,7 @@ public class VentanaEditarLibros extends JInternalFrame implements ActionListene
 		setVisible(true);
 		this.getContentPane().setBackground(new Color(48, 158, 125));
 		setTitle("Editar libro");
-		
+		setResizable(false);
 		//Incicalizar------
 		
 		cajatitulo=new JTextField(10);
@@ -114,6 +114,48 @@ public class VentanaEditarLibros extends JInternalFrame implements ActionListene
 			@Override public void keyPressed(KeyEvent e) {}
 			@Override public void keyReleased(KeyEvent e) {}
 		});
+		cajaEditorial.addKeyListener(new KeyListener() {
+			
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char car = e.getKeyChar();
+				if(Character.isLetter(car) || Character.isSpaceChar(car)){
+					//String cadena=txtNombre.getText();
+					//txtNumControl.setText(cadena+e);
+				}else{
+				e.consume();
+				}
+			}
+			@Override public void keyPressed(KeyEvent e) {}
+			@Override public void keyReleased(KeyEvent e) {}
+		});
+				cajaGeneros.addKeyListener(new KeyListener() {		
+				@Override
+				public void keyTyped(KeyEvent e) {
+					char car = e.getKeyChar();
+					if(Character.isLetter(car) || Character.isSpaceChar(car)){
+						}else{
+						e.consume();
+						}
+					}
+					@Override public void keyPressed(KeyEvent e) {}
+					@Override public void keyReleased(KeyEvent e) {}
+				});
+				cajatitulo.addKeyListener(new KeyListener() {
+					
+					@Override
+					public void keyTyped(KeyEvent e) {
+						char car = e.getKeyChar();
+						if(Character.isLetter(car) || Character.isSpaceChar(car)){
+							//String cadena=txtNombre.getText();
+							//txtNumControl.setText(cadena+e);
+						}else{
+						e.consume();
+						}
+					}
+					@Override public void keyPressed(KeyEvent e) {}
+					@Override public void keyReleased(KeyEvent e) {}
+				});
 		
 		btnBuscar.addActionListener(this);
 		btnLimpiar.addActionListener(this);

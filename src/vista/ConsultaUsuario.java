@@ -41,13 +41,13 @@ public class ConsultaUsuario extends JInternalFrame implements ActionListener{
 	public ConsultaUsuario() {
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setSize(300, 400);
+		setSize(325, 400);
 		setVisible(true);
 		this.getContentPane().setBackground(new Color(48, 158, 125));
 		setTitle("Consultas");
 		
 		//setIconifiable(true);//Minimizar
-		//setResizable(true);//Cambiar tamaño
+		setResizable(false);//Cambiar tamaño
 		//setClosable(true);//Cerrar
 		
 		//Inicializar componentes

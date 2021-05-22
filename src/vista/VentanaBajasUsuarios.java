@@ -36,10 +36,8 @@ public class VentanaBajasUsuarios extends JInternalFrame implements ActionListen
 		setVisible(true);
 		this.getContentPane().setBackground(new Color(48, 158, 125));
 		setTitle("Eliminar Usuario");
+		setResizable(false);//Cambiar tamaño
 		
-		setIconifiable(true);//Minimizar
-		setResizable(true);//Cambiar tamaño
-		setClosable(true);//Cerrar
 		
 		//Inicializar componentes
 		cajaId=new JTextField(10);

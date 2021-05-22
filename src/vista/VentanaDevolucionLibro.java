@@ -48,7 +48,6 @@ public class VentanaDevolucionLibro extends JInternalFrame implements ActionList
 		this.getContentPane().setBackground(new Color(48, 158, 125));
 		setTitle("Devolucion de libros");
 		
-		setIconifiable(true);//Minimizar
 		setResizable(false);//Cambiar tamaño
 		//setClosable(true);//Cerrar
 		

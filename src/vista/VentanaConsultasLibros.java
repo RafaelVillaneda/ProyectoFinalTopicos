@@ -42,7 +42,7 @@ public class VentanaConsultasLibros extends JInternalFrame implements ActionList
 		setVisible(true);
 		this.getContentPane().setBackground(new Color(48, 158, 125));
 		setTitle("Consultas Libros");
-		
+		setResizable(false);
 		//Incicalizar------
 		
 		cajatitulo=new JTextField(10);

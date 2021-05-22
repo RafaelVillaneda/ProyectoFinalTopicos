@@ -45,6 +45,7 @@ public class VentanaAgregarLibro extends JInternalFrame implements ActionListene
 		setVisible(true);
 		this.getContentPane().setBackground(new Color(48, 158, 125));
 		setTitle("Agregar Libro");
+		setResizable(false);
 		
 		//Incicalizar------
 		
@@ -122,8 +123,6 @@ public class VentanaAgregarLibro extends JInternalFrame implements ActionListene
 			public void keyTyped(KeyEvent e) {
 				char car = e.getKeyChar();
 				if(Character.isLetter(car) || Character.isSpaceChar(car)){
-					//String cadena=txtNombre.getText();
-					//txtNumControl.setText(cadena+e);
 				}else{
 				e.consume();
 				}
@@ -137,8 +136,6 @@ public class VentanaAgregarLibro extends JInternalFrame implements ActionListene
 			public void keyTyped(KeyEvent e) {
 				char car = e.getKeyChar();
 				if(Character.isLetter(car) || Character.isSpaceChar(car)){
-					//String cadena=txtNombre.getText();
-					//txtNumControl.setText(cadena+e);
 				}else{
 				e.consume();
 				}
@@ -152,8 +149,6 @@ public class VentanaAgregarLibro extends JInternalFrame implements ActionListene
 			public void keyTyped(KeyEvent e) {
 				char car = e.getKeyChar();
 				if(Character.isLetter(car) || Character.isSpaceChar(car)){
-					//String cadena=txtNombre.getText();
-					//txtNumControl.setText(cadena+e);
 				}else{
 				e.consume();
 				}
@@ -173,7 +168,6 @@ public class VentanaAgregarLibro extends JInternalFrame implements ActionListene
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==btnAgregarLibro) {
-			
 				if(validarCajasVacias()){
 				Libro libro=new Libro(cajatitulo.getText(), cajaGeneros.getText(), cajaAutor.getText(), cajaEditorial.getText(),0);
 				if(ConexionBD.AgregarRegistroTablaLibros(libro)) {

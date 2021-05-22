@@ -42,11 +42,11 @@ public class VentanaAgregarUsuarios extends JInternalFrame implements ActionList
 	public VentanaAgregarUsuarios() {
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setSize(270, 400);
+		setSize(290, 400);
 		setVisible(true);
 		this.getContentPane().setBackground(new Color(48, 158, 125));
 		setTitle("Agregar Usuario");
-		
+		setResizable(false);
 		
 		//Inicializar componentes
 		cajaId=new JTextField(10);
