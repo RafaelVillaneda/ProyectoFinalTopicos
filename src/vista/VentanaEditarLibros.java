@@ -166,7 +166,7 @@ public class VentanaEditarLibros extends JInternalFrame implements ActionListene
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		LibroDAO lDAO=new LibroDAO();
-		if(e.getSource()==btnBuscar) {
+		if(e.getSource()==btnBuscar && !cajaId.getText().isEmpty()) {
 			lDAO.setFiltro(Integer.parseInt(cajaId.getText()));
 				Libro libro=lDAO.buscar(Integer.parseInt(cajaId.getText()));
 				if(libro!=null) {

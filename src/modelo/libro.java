@@ -49,6 +49,12 @@ public class Libro {
 	public void setIDLibro(int iDLibro) {
 		IDLibro = iDLibro;
 	}
+	@Override
+	public String toString() {
+		return "Libro [nombre=" + nombre + ", genero=" + genero + ", autor=" + autor + ", editorial=" + editorial
+				+ ", IDLibro=" + IDLibro + "]";
+	}
+	
 	
 	
 	

@@ -46,6 +46,7 @@ public class LibroDAO implements Runnable{
 				l1.setAutor(rs.getString(4));
 				l1.setEditorial(rs.getString(5));
 			}else {
+				VentanaEliminarLibro.bandera=0;
 				return null;
 			}
 		} catch (SQLException e) {
