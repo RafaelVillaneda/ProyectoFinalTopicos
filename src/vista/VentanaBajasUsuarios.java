@@ -133,12 +133,15 @@ public class VentanaBajasUsuarios extends JInternalFrame implements ActionListen
 			}
 		}else if(e.getSource()==btnLimpiar) {
 			restablecer(cajaCorreo,cajaId,cajaNombre,cajaPrimerAp,cajaSegundoAp);
+			btnBaja.setEnabled(false);
 		}else if(e.getSource()==btnBaja) {
 			if(uDAO.eliminarRegistro(cajaId.getText())) {
 				JOptionPane.showMessageDialog(null,"Se elimino el Usuario correctamente");
 				btnBaja.setEnabled(false);
+				restablecer(cajaCorreo,cajaId,cajaNombre,cajaPrimerAp,cajaSegundoAp);
 			}else {
 				JOptionPane.showMessageDialog(null,"NO se elimino el Usuario correctamente");
+				btnBaja.setEnabled(false);
 			}
 		}else if(e.getSource()==btnCancelar) {
 			setVisible(false);

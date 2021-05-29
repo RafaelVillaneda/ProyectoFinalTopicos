@@ -5,6 +5,8 @@ public class Movimiento {
 	private int id_Movimiento,id_libro,id_usuario;
 	private String fecha;
 	
+	public Movimiento() {}
+	
 	public Movimiento(int id_Movimiento, int id_libro, int id_usuario, String fecha) {
 		this.id_Movimiento = id_Movimiento;
 		this.id_libro = id_libro;
