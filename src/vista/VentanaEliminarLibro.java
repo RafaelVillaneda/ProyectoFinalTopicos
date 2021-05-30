@@ -132,7 +132,7 @@ public class VentanaEliminarLibro extends JInternalFrame implements ActionListen
 			Thread hilo=new Thread(lDAO);
 			hilo.start();
 			Libro libro=lDAO.buscar(Integer.parseInt(cajaId.getText()));
-			if(bandera==1 && libro!=null) {
+			if(bandera==1 || libro!=null) {
 				bandera=0;
 				libro=lDAO.buscar(Integer.parseInt(cajaId.getText()));
 				cajaAutor.setText(libro.getAutor());

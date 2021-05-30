@@ -171,8 +171,9 @@ public class ConsultaUsuario extends JInternalFrame implements ActionListener{
 			uDAO.setFiltro(Integer.parseInt(cajaId.getText()));
 			Thread hilo=new Thread(uDAO);
 			hilo.start();
-			if(bandera==1) {
-				Usuario usu= uDAO.buscar(Integer.parseInt(cajaId.getText()));
+			Usuario usu= uDAO.buscar(Integer.parseInt(cajaId.getText()));
+			if(bandera==1 || usu!=null) {
+				bandera=0;
 				cajaCorreo.setText(usu.getCorreo());
 				cajaNombre.setText(usu.getNombre());
 				cajaPrimerAp.setText(usu.getPrimerAp());

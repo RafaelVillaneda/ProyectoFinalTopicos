@@ -39,6 +39,7 @@ public class VentanaAgregarUsuarios extends JInternalFrame implements ActionList
 	
 	JTable tabla=new JTable();
 	UsuarioDAO uDAO=new UsuarioDAO();
+	
 	public VentanaAgregarUsuarios() {
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);

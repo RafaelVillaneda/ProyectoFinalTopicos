@@ -25,9 +25,6 @@ public class ConexionBD {
 			
 			conexion = DriverManager.getConnection(URL, "root", "REVT2001");
 			
-			System.out.println("Conexion establecida!!!!");
-			System.out.println("Ya casi soy Ingeniero inmortal");
-			
 		} catch (ClassNotFoundException e) {
 			System.out.println("Error de DRIVER");
 		} catch (SQLException e) {

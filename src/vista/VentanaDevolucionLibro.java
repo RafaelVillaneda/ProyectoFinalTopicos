@@ -116,8 +116,8 @@ public class VentanaDevolucionLibro extends JInternalFrame implements ActionList
 				boolean bandera=false;
 				bandera=mDAO.eliminarRegistro(cajaIDMOv.getText());
 				Movimiento mov= mDAO.buscar(Integer.parseInt(cajaIDMOv.getText()));
-				System.out.println(bandera);
-				System.out.println(mov);
+				//System.out.println(bandera);
+				//System.out.println(mov);
 				if(mov==null && bandera) {
 					JOptionPane.showMessageDialog(null,"Se elimino el registro corretamente");
 					actualizarTabla();

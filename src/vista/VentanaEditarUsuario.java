@@ -185,6 +185,7 @@ public class VentanaEditarUsuario extends JInternalFrame implements ActionListen
 			
 		}else if(e.getSource()==btnLimpiar) {
 			restablecer(cajaCorreo,cajaId,cajaNombre,cajaPrimerAp,cajaSegundoAp);
+			btnRescribir.setEnabled(false);
 		}else if(e.getSource()==btnRescribir) {
 			Usuario usuario=new Usuario();
 			if(validarCajasVacias()) {

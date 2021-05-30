@@ -67,7 +67,7 @@ public class VentanaInicio extends JFrame implements ActionListener{
 		
 		
 		
-		//Menu item Acciones Usuarios
+		//Menu item Acciones Libros
 		
 			menuAccionesLibros=new JMenu("Acciones libros");
 			
@@ -134,7 +134,7 @@ public class VentanaInicio extends JFrame implements ActionListener{
 			dp.add(ventanaEdicion);
 			ventanaEdicion.setVisible(true);
 			add(dp);
-		}else if(e.getSource()==menuAltasibrosMov) {//GUI en edicion 
+		}else if(e.getSource()==menuAltasibrosMov) {//GUI Completa
 			VentanaAltasLibrosMovimientos ventanaRenta=new VentanaAltasLibrosMovimientos();
 			dp.add(ventanaRenta);
 			ventanaRenta.setVisible(true);

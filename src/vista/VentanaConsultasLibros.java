@@ -95,7 +95,7 @@ public class VentanaConsultasLibros extends JInternalFrame implements ActionList
 		
 		actualizarTabla();
 		JScrollPane scroll=new JScrollPane(tablaLibros);
-		scroll.setBounds(10, 250, 325, 100);add(scroll);
+		scroll.setBounds(10, 250, 400, 100);add(scroll);
 		
 		//VALIDACION
 		cajaId.addKeyListener(new KeyListener() {
@@ -110,6 +110,58 @@ public class VentanaConsultasLibros extends JInternalFrame implements ActionList
 			@Override public void keyPressed(KeyEvent e) {}
 			@Override public void keyReleased(KeyEvent e) {}
 		});
+		
+		cajaAutor.addKeyListener(new KeyListener() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char car = e.getKeyChar();
+				if(Character.isLetter(car)||Character.isSpaceChar(car)){
+				}else{
+				e.consume();
+				}
+			}
+			@Override public void keyPressed(KeyEvent e) {}
+			@Override public void keyReleased(KeyEvent e) {}
+		});
+		
+		cajaEditorial.addKeyListener(new KeyListener() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char car = e.getKeyChar();
+				if(Character.isLetter(car)||Character.isSpaceChar(car)){
+				}else{
+				e.consume();
+				}
+			}
+			@Override public void keyPressed(KeyEvent e) {}
+			@Override public void keyReleased(KeyEvent e) {}
+		});
+		cajaGeneros.addKeyListener(new KeyListener() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char car = e.getKeyChar();
+				if(Character.isLetter(car)||Character.isSpaceChar(car)){
+				}else{
+				e.consume();
+				}
+			}
+			@Override public void keyPressed(KeyEvent e) {}
+			@Override public void keyReleased(KeyEvent e) {}
+		});
+		
+		cajatitulo.addKeyListener(new KeyListener() {
+			@Override
+			public void keyTyped(KeyEvent e) {
+				char car = e.getKeyChar();
+				if(Character.isLetter(car)||Character.isSpaceChar(car)){
+				}else{
+				e.consume();
+				}
+			}
+			@Override public void keyPressed(KeyEvent e) {}
+			@Override public void keyReleased(KeyEvent e) {}
+		});
+		
 		
 		btnBuscar.addActionListener(this);
 		btnLimpiar.addActionListener(this);
