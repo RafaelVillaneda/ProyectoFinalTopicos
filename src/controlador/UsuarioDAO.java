@@ -45,7 +45,6 @@ public class UsuarioDAO implements Runnable{
 		try {
 			
 			if(rs.next()) {
-
 			u1.setId(rs.getInt(1));
 			u1.setNombre(rs.getString(2));
 			u1.setPrimerAp(rs.getString(3));
@@ -54,10 +53,11 @@ public class UsuarioDAO implements Runnable{
 			ConsultaUsuario.bandera=1;
 			}else {
 				JOptionPane.showMessageDialog(null,"No existe el usuario");
+				ConsultaUsuario.bandera=0;
 				return null;
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			ConsultaUsuario.bandera=0;
 		}
 		
 		return u1;

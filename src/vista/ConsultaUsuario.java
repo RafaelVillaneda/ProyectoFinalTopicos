@@ -172,12 +172,19 @@ public class ConsultaUsuario extends JInternalFrame implements ActionListener{
 			Thread hilo=new Thread(uDAO);
 			hilo.start();
 			Usuario usu= uDAO.buscar(Integer.parseInt(cajaId.getText()));
-			if(bandera==1 || usu!=null) {
-				bandera=0;
+			if(bandera==1 && usu!=null) {
+				System.out.println(bandera);
+				//bandera=0;
+				System.out.println(usu);
 				cajaCorreo.setText(usu.getCorreo());
 				cajaNombre.setText(usu.getNombre());
 				cajaPrimerAp.setText(usu.getPrimerAp());
 				cajaSegundoAp.setText(usu.getSegundoAp());
+				uDAO.setFiltro(0);
+				
+				}else {
+					System.out.println(bandera);
+					System.out.println(usu);
 				}
 			}else {
 				JOptionPane.showMessageDialog(null,"La casilla ID no puede estar vacia.");
